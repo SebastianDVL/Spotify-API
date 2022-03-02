@@ -1,0 +1,17 @@
+.side{
+    background-color:Black !important;
+}
+
+.banner{
+    height: 40vh;
+}
+
+.cont{
+    background-color:#191414;
+}
+
+.cont:hover{
+    background-color:#191414dc !important;
+}
+
+
