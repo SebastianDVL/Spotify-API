@@ -4,14 +4,31 @@
 
 .banner{
     height: 40vh;
+    background: url('img/thepolice.jpg');
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.banner > h1{
+    font-size: 6em;
+    color:white;
+    font-weight:700;
+}
+.data-container{
+    background-color:#191919;
 }
 
 .cont{
-    background-color:#191414;
+    background-color:#191919;
 }
 
 .cont:hover{
-    background-color:#191414dc !important;
+    background-color:#2D2D2D !important;
 }
+
+.n{
+    width: 40px;
+}
+
 
 

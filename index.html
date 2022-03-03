@@ -10,32 +10,36 @@
     <script src="servicios.js" defer></script>
     <title>Document</title>
 </head>
-<body>
-    <div class="container-fluid">
+<body class="bg-dark">
+    <div class="container shadow">
+        <div class="row banner d-flex px-3">
+            <h1 class="align-self-end mb-5">The Police</h1>
+        </div>
         <div class="row">
-
-            <div class="col side">
-                <div class="position-fixed">
-
-                </div>
-            </div>
-            <div class="col-10">
-                <div class="row banner">
-
-                </div>
+            <div class="col-8">
+               
                 <div class="row data-container"data-container>
+                    <h2 class="text-white my-3 mx-4">Top Tracks</h2>
                     <template data-song-template>
-                        <div class="cont text-white p-2 d-flex align-items-center">
-                            <img src="" class="me-2">
-                            <p></p>
+                        <div class="cont text-white my-1 py-2 ps-2 pe-5 d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <div class="n d-flex align-items-center justify-content-center pe-2"><h6></h6></div>
+                            
+                                <img src="" class="me-2">
+                                <div class="ms-3"><h5 class="name m-0 p-0"></h5><p class="m-0 p-0"></p><small class="m-0 p-0"></small></div>
+                            </div>
+                            <audio src="" controls></audio>
+                            
+                            <h5 class="ml-auto duration text-muted fw-normal"></h5>
                         </div>
                     </template>
                 </div>
             </div>
+            <div class="col side">
+                
+            </div>
         </div>
-        <div class="row position-fixed bottom-0 p-5 bg-dark w-100">
-            
-        </div>
+        
     </div>
 
 </body>
