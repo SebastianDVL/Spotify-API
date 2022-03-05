@@ -1,5 +1,5 @@
 .side{
-    background-color:Black !important;
+    background-color:#1e3554 !important;
 }
 
 .banner{
@@ -9,23 +9,29 @@
     background-repeat: no-repeat;
     background-position: center center;
 }
-.banner > h1{
+.banner > div > h1{
     font-size: 6em;
     color:white;
     font-weight:700;
 }
+.banner > div {
+    background-color:rgb(30, 53, 84,0.5) !important;
+    
+}
+
+
 .data-container{
-    background-color:#191919;
+    background-color:#1e3554;
     margin-bottom: 12vh;
 }
 
 .cont{
-    background-color:#191919;
+    background-color:#111c2b;
     cursor: pointer;
 }
 
 .cont:hover{
-    background-color:#2D2D2D !important;
+    background-color:#111c2b85 !important;
 }
 
 .n{
@@ -35,13 +41,82 @@
 .audio-player{
 width: 100%;
 position:fixed;
-background-color: #1d1c1c;
+background-color: #171717;
 height: 12vh;
 bottom: 0;
 }
 
-i:hover{
-    text-shadow: 0 0 10px white;
+.cont > i:hover{
+    transform: scale(1.1);
+    color: #cb673d !important;
 }
+.volumeline {
+    -webkit-appearance: none;
 
+    height: .3em;
+    background-color:  #535353;
+    border-radius: 5px;
+    background-size: 100% 100%;
+    background-image: linear-gradient(#fff, #fff);
+    background-repeat: no-repeat;
+  }
+  
+.volumeline::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+
+  }
+  
+
+
+.timeline {
+    -webkit-appearance: none;
+    width: 100%;
+    height: .3em;
+    background-color:  #535353;
+    border-radius: 5px;
+    background-size: 0% 100%;
+    background-image: linear-gradient(#fff, #fff);
+    background-repeat: no-repeat;
+  }
+
+  .timeline:hover,.volumeline:hover{
+    background-image: linear-gradient(#cb673d, #cb673d);
+  }
+
+  .timeline::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    background-color: white;
+ 
+  }
+  
+  .timeline:hover::-webkit-slider-thumb {
+    opacity: 1;
+  }
+  
+  .timeline::-webkit-slider-runnable-track,.volumeline::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+
+  
+  .bt{
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+  }
+  .bt:hover{
+      transform: scale(1.1);
+      color: white;
+  }
 
