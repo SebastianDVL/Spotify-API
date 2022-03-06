@@ -11,11 +11,12 @@
     <script src="servicios.js" defer></script>
     <title>Document</title>
 </head>
-<body class="bg-dark">
+<body>
+    <audio src="" class="hide" controls></audio>
     <div class="container shadow">
         <div class="row banner ">
             <div class="d-flex px-3">
-               <h1 class="align-self-end mb-5">The Police</h1> <audio src="" controls></audio>
+               <h1 class="align-self-end mb-5">The Police</h1> 
             </div>
             
         </div>
@@ -29,14 +30,14 @@
                     </div>
                     
                     <template data-song-template>
-                        <div class="cont text-white my-1 py-2 ps-2 pe-5 d-flex align-items-center justify-content-between">
+                        <div class="cont my-1 py-2 ps-2 pe-5 d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center w-75">
-                                <div class="n d-flex align-items-center justify-content-center pe-2"><h6></h6></div>
+                                <div class="n d-flex align-items-center justify-content-center pe-2 position-relative"><h6></h6><i class="fa-solid invisible fa-music position-absolute left-50 top-50 translate-middle"></i></div>
                             
                                 <img src="" class="me-2">
-                                <div class="ms-3"><h5 class="name m-0 p-0"></h5><p class="m-0 p-0"></p><small class="m-0 p-0"></small></div>
+                                <div class="ms-3"><h5 class="nombre m-0 p-0"></h5><p class="m-0 p-0"></p><small class="m-0 p-0"></small></div>
                             </div>
-                            <i class="fa-solid fa-play text-white fs-1 invisible playBtn"></i>
+                            <i class="fa-solid fa-play text-white fs-3 invisible playBtn"></i>
                      
                             
                             <h6 class="ml-auto duration text-muted fw-normal"></h6>

@@ -21,21 +21,23 @@
 
 
 .data-container{
-    background-color:#1e3554;
+    background-color:#111c2b;
     margin-bottom: 12vh;
 }
 
 .cont{
-    background-color:#111c2b;
-    cursor: pointer;
+  color:white;
 }
 
 .cont:hover{
-    background-color:#111c2b85 !important;
+    background-color:#1e355481 !important;
 }
 
 .n{
     width: 40px;
+}
+small{
+  color:#afafaf;
 }
 
 .audio-player{
@@ -49,6 +51,8 @@ bottom: 0;
 .cont > i:hover{
     transform: scale(1.1);
     color: #cb673d !important;
+    transition: 100ms;
+    cursor: pointer;
 }
 .volumeline {
     -webkit-appearance: none;
@@ -119,4 +123,17 @@ bottom: 0;
       transform: scale(1.1);
       color: white;
   }
+ 
+  body{
+    background-color:#cb673d;
+  }
+
+  .hide{
+    display: none !important;
+  }
+
+.orange{
+  color:#cb673d;
+}
+
 

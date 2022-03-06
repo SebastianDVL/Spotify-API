@@ -1,6 +1,6 @@
 
 const URI = "https://api.spotify.com/v1/artists/5NGO30tJxFlKixkPSgXcFE/top-tracks?market=US"
-const TOKEN = "Bearer BQACRvjItRowHQpyhbuJ2nxvWwUvp36ci7AycyY-v9h1zwR65VqNWRaPMf7vom9jys6X6N3cNX8vd0P3G9WytcTAFESCNZmD3P6bOdrvU4LuYdCnSXfcQM0XXEWND3-XslysPHIuHlikj-F5"
+const TOKEN = "Bearer BQA7JPAI4A9nZkVYLC8rBrIs65yJv0IiSXMboQin8c-isZv2SBSxzhsWh2_m2LP3UKygrOK-cHxRQwjBLe2OKTAPeMh_Tj-Ipb4G4u38jpFRIrxbgQVRirmryIviP-DHUYrWOGiKTYBY6iZL"
 
 let parametrosPeticion = {
     method:"GET",
@@ -11,25 +11,22 @@ let parametrosPeticion = {
 
 const songTemplates = document.querySelector("[data-song-template]")
 const container = document.querySelector("[data-container]")
-let audio = document.querySelector("audio")
+
+
+let songNames ={}
 fetch(URI,parametrosPeticion)
 .then(res=>res.json())
 .then(data=>{
-    let songs = []
-    let songContainers = []
-    let songNames ={}
 
     songNames = data.tracks.map((track,index) => {
         let cont= songTemplates.content.cloneNode(true).children[0]
         let img = cont.querySelector("img")
-        let songName = cont.querySelector(".name")
+        let songName = cont.querySelector(".nombre")
         let album = cont.querySelector("p")
         let year = cont.querySelector("small")
         let i = cont.querySelector("h6")
         let duration  = cont.querySelector(".duration")
 
-        songs.push(track.preview_url)
-        songContainers.push(cont)
 
         img.src = track.album.images[0].url
         img.height = track.album.images[2].height
@@ -45,13 +42,12 @@ fetch(URI,parametrosPeticion)
 
         return {contenedor:cont, titulo:track.name,song:track.preview_url}
     })
-    audio.src = data.tracks[0].preview_url
-    songContainers.forEach(song => {
-        let play =  song.querySelector(".fa-play")
-        song.addEventListener('mouseover', () => { 
+    songNames.forEach(song => {
+        let play =  song.contenedor.querySelector(".fa-play")
+        song.contenedor.addEventListener('mouseover', () => { 
            play.classList.toggle("invisible")
         })
-        song.addEventListener('mouseout', () => { 
+        song.contenedor.addEventListener('mouseout', () => { 
             play.classList.toggle("invisible")
          })
     })
@@ -61,43 +57,77 @@ fetch(URI,parametrosPeticion)
 })
 .catch(respuestaERROR=>console.log(respuestaERROR))
 
-let playButton = document.querySelector('.playBtn')
+// Dale al PLay !!!
 
 
-let changeICon = (add,remove)=>{
-    playButton.classList.add(add)
-    playButton.classList.remove(remove)
+let changeICon = (add,remove,playButtons)=>{
+    playButtons.forEach(playButton => {
+        playButton.classList.add(add)
+        playButton.classList.remove(remove)
+    })
+    
  }
 
-let play = ()=>{
+let play = (playButtons)=>{
     if(audio.paused){
         audio.play()
-        changeICon('fa-pause','fa-play')
+        changeICon('fa-pause','fa-play',playButtons)  
     }else{
         audio.pause()
-        changeICon('fa-play','fa-pause')
+        changeICon('fa-play','fa-pause',playButtons)
     }  
  }
 
- playButton.addEventListener('click',play)
-
+let audio = document.querySelector("audio")
 
 function cambiarCancion (songNames){
-       
-     songNames.forEach((songName,index) =>{
-       
-        songName.contenedor.addEventListener('click',e=>{
-            let target = e.target
-            let icons = document.querySelectorAll(".playBtn")
-            if(target == icons[index]){
-                
-                audio.src = songName.song
-                console.log(songName)
-                play()
-            }
+    audio.src = songNames[0].song 
+    songNames[0].contenedor.classList.add("orange")
+
+    let playButtons = document.querySelectorAll(".playBtn") 
+    let newIndex = 0
+   
+    playButtons.forEach((playButton,index) =>{   
+        function reproducir(){
+            let buttons = []
+                playButtons.forEach((btn,secondIndex)=>{
+                    if(index != 10){
+                    
+                        if(secondIndex != index){
+                            btn.classList.add('fa-play')
+                            btn.classList.remove('fa-pause')
+                            btn.parentNode.classList.remove("orange")
+                          
+                        }
+                    }
+                   
+                })
+                if(index !=10){  
+                    buttons = [playButton,playButtons[10]]
+                    newIndex = index
+                     playButton.parentNode.classList.add("orange")
+                   
+    
+                    if(audio.src == songNames[index].song){
+                        play(buttons)
+                    }else{
+                        audio.src = songNames[index].song
+                        play(buttons) 
+                    } 
+                }else{            
+                    buttons=[playButton,playButtons[newIndex]]
+                    play(buttons)
+                }
+        }
+        playButton.addEventListener('click',()=>{
+            reproducir()
+        }) 
+        playButton.parentNode.addEventListener('dblclick',()=>{
+            reproducir()
         })
-     })
-      audio.onended = ()=>{changeICon('fa-play','fa-pause')}
+        
+    })
+    audio.onended = ()=>{changeICon('fa-play','fa-pause',playButtons)} 
 }
 // Funcion para convertir milisegundos a formato minutos:segundos
  let msToMinutes = ms => {
@@ -105,13 +135,6 @@ function cambiarCancion (songNames){
     let segundos = ((ms % 60000) / 1000).toFixed(0);
     return minutos + ":" + (segundos < 10 ? '0' : '') + segundos;
  }
-
-
-
-
-
-
-
 
 let timeline = document.querySelector('.timeline');
 
@@ -157,9 +180,13 @@ rangeInputs.forEach(input => {
 // Cambiar icono de volumen dependiendo del nivel de volumen
 
 let volumeline = document.querySelector('.volumeline')
+ let volumeIcon = document.querySelector('.volumeIcon')
+ 
+ volumeIcon.addEventListener('click',()=>{
 
+ })
 volumeline.addEventListener('change',()=>{
-    let volumeIcon = document.querySelector('.volumeIcon')
+   
     let volume = volumeline.value / 100;
     if(volume == 0){
         volumeIcon.classList.add("fa-volume-xmark")
@@ -178,5 +205,19 @@ volumeline.addEventListener('change',()=>{
 })
  
 
+//buscador
 
+let inputSearch = document.querySelector("#searchBar")
 
+inputSearch.addEventListener("input",e =>{
+    let value = e.target.value.toLowerCase().replace(/ /g,"");
+
+    songNames.forEach(songName =>{
+        let name = songName.titulo.toLowerCase().replace(/ /g,"");
+
+        let isVisible = name.includes(value)
+        songName.contenedor.classList.toggle("hide",!isVisible)
+        
+    })
+    
+})
