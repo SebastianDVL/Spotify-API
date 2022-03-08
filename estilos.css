@@ -22,7 +22,6 @@
 
 .data-container{
     background-color:#111c2b;
-    margin-bottom: 12vh;
 }
 
 .cont{
@@ -134,6 +133,11 @@ bottom: 0;
 
 .orange{
   color:#cb673d;
+}
+
+.col-8{
+  height: 48vh;
+  overflow-y: scroll;
 }
 
 
