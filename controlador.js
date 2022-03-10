@@ -2,16 +2,62 @@ import {consumirAPI} from './service.js'
 import {imprimirCanciones}from './imprimirCanciones.js' 
 import {manejarReproductor} from './reproductor.js'
 import {reproducirCanciones} from './reproducirCanciones.js'
-import {buscarCanciones} from './buscador.js'
 
-let canciones = await consumirAPI()
+let artistas = [
+    {uri:'https://api.spotify.com/v1/artists/5NGO30tJxFlKixkPSgXcFE/top-tracks?market=US',img:'img/thepolice.jpg'},
+    {uri: 'https://api.spotify.com/v1/artists/7bu3H8JO7d0UbMoVzbo70s/top-tracks?market=US',img:'img/thecure.webp'},
+    {uri:'https://api.spotify.com/v1/artists/5M52tdBnJaKSvOpJGz8mfZ/top-tracks?market=US',img:'img/bs.webp'},
+    {uri:'https://api.spotify.com/v1/artists/2QsynagSdAqZj3U9HgDzjD/top-tracks?market=US',img:'img/bob.jpg'},
+    {uri:'https://api.spotify.com/v1/artists/5eAWCfyUhZtHHtBdNk56l1/top-tracks?market=US',img:'img/soad.jpg'}
+]
+ 
 
-let songs =  imprimirCanciones(canciones)
+let buttons = document.querySelectorAll('.btn')
 let audio = document.querySelector("audio")
+let songs = {}
+let canciones ={}
+let dataContainer = document.querySelector('[data-container]')
+let banner = document.querySelector('.banner')
+let header = document.querySelector('header')
+let audioPlayer = document.querySelector('.audio-player')
 
-reproducirCanciones(songs,audio)
-manejarReproductor(audio)
-buscarCanciones(songs)
+buttons.forEach((button,index)=>{
+    button.addEventListener('click',async()=>{
+        canciones = await consumirAPI(artistas[index].uri)
+        checkAndExecute(index)
+        
+    })
+         
+})
+    
+
+function ejecutarFunciones(index) { 
+    const styles = {
+        backgroundSize:"100% 100%",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center"
+    }
+        banner.style.background = `url(${artistas[index].img})`
+        Object.assign(banner.style, styles)
+        let newIndex = 0
+        songs = imprimirCanciones(canciones)
+        reproducirCanciones(songs,audio,newIndex)
+        manejarReproductor(audio)
+}
+
+function checkAndExecute(index) {  
+    if(dataContainer.childElementCount == 0){
+        header.removeAttribute('class')
+        audioPlayer.classList.remove('invisible')
+        ejecutarFunciones(index)
+    }else{
+        dataContainer.innerHTML = ""
+        ejecutarFunciones(index)
+    }
+
+}
+   
+
 
 
 

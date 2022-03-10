@@ -1,13 +1,11 @@
-.side{
-    background-color:#1e3554 !important;
-}
 
 .banner{
-    height: 40vh;
-    background: url('img/thepolice.jpg');
-    background-size:100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
+    height: 75vh;
+}
+.bgAdjust{
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .banner > div > h1{
     font-size: 6em;
@@ -15,21 +13,21 @@
     font-weight:700;
 }
 .banner > div {
-    background-color:rgb(30, 53, 84,0.5) !important;
+    background-color:rgba(0, 0, 0, 0.5) !important;
     
 }
 
-
 .data-container{
-    background-color:#111c2b;
+    margin-bottom: 12vh;
 }
 
 .cont{
   color:white;
+  background-color:#202020;
 }
 
 .cont:hover{
-    background-color:#1e355481 !important;
+    background-color:#292929!important;
 }
 
 .n{
@@ -122,10 +120,6 @@ bottom: 0;
       transform: scale(1.1);
       color: white;
   }
- 
-  body{
-    background-color:#cb673d;
-  }
 
   .hide{
     display: none !important;
@@ -135,9 +129,10 @@ bottom: 0;
   color:#cb673d;
 }
 
-.col-8{
-  height: 48vh;
-  overflow-y: scroll;
+header{
+  background-color:#111c2b;
 }
 
-
+body{
+  background-color:#202020;
+}
