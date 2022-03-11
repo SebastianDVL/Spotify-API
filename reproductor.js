@@ -1,6 +1,5 @@
 export function manejarReproductor(audio){
     let timeline = document.querySelector('.timeline');
-
     //Sincronizar la linea de tiempo del input range con la de la cancion
 
     window.onload = ()=>{timeline.value = 0}

@@ -1,5 +1,6 @@
 
-export function reproducirCanciones(songs,audio,newIndex){
+export function reproducirCanciones(songs,audio){
+   
     songs.forEach(song => {
         let play =  song.contenedor.querySelector(".fa-play")
         song.contenedor.addEventListener('mouseover', () => { 
@@ -9,7 +10,8 @@ export function reproducirCanciones(songs,audio,newIndex){
             play.classList.toggle("invisible")
          })
     })
-    let playButtons = document.querySelectorAll(".playBtn") 
+    let playButtons = document.querySelectorAll(".playBtn")
+   
     let changeICon = (add,remove,playButtons)=>{
         playButtons.forEach(playButton => {
             playButton.classList.add(add)
@@ -17,6 +19,7 @@ export function reproducirCanciones(songs,audio,newIndex){
         })
         
      }
+    changeICon('fa-play','fa-pause',playButtons)
     
     let play = (playButtons)=>{
         if(audio.paused){
@@ -35,23 +38,31 @@ export function reproducirCanciones(songs,audio,newIndex){
     let audioPlayer = document.querySelector('.audio-player')
     let img = audioPlayer.querySelector('img')
     let name = audioPlayer.querySelector('.nombre')
-    let album = audioPlayer.querySelector('p')
+    let album = audioPlayer.querySelector('em')
+    let popularity = audioPlayer.querySelector('small')
 
-    name.textContent = songs[0].titulo
-    album.textContent = songs[0].album
-    img.src = songs[0].img[2].url
-    img.height = songs[0].img[2].height
-    img.width = songs[0].img[2].width
+    function print(n){
+        name.textContent = songs[n].titulo
+        album.textContent = songs[n].album
+        img.src = songs[n].img[2].url
+        img.height = songs[n].img[2].height
+        img.width = songs[n].img[2].width
+        popularity.textContent = `Popularity: ${songs[n].popularity}`
+    }
+    print(0)
     
-    
-  
-    
-    playButtons.forEach((playButton,index) =>{   
-        function reproducir(){
-            let buttons = []
+    let newIndex = 0
+    let buttons = []
+
+    let changeButtons = document.querySelectorAll('.change')
+
+    playButtons.forEach((playButton,index) =>{  
+        
+        function reproducir(i){
+                console.log(i)
                 playButtons.forEach((btn,secondIndex)=>{
-                if(index != 10){
-                        if(secondIndex != index){
+                if(i != 10){                 
+                if(secondIndex != i){
                             btn.classList.add('fa-play')
                             btn.classList.remove('fa-pause')
                             btn.parentNode.classList.remove("orange")
@@ -59,35 +70,57 @@ export function reproducirCanciones(songs,audio,newIndex){
                     }
                     
                 })
-                if(index !=10){  
-                    name.textContent = songs[index].titulo
-                    album.textContent = songs[index].album
-                    img.src = songs[index].img[2].url
-                    img.height = songs[index].img[2].height
-                    img.width = songs[index].img[2].width
+                if(i !=10){  
+                    print(i)
+
                     buttons = [playButton,playButtons[10]]
-                    newIndex = index
-                    playButton.parentNode.classList.add("orange")
+                    newIndex = i
+                    playButtons[i].parentNode.classList.add("orange")
                     
     
-                    if(audio.src == songs[index].song){
+                    if(audio.src == songs[i].song){
                         play(buttons)
                     }else{
-                        audio.src = songs[index].song
+                        audio.src = songs[i].song
                         play(buttons) 
                     } 
-                }else{            
+                }else{
+                             
                     buttons=[playButton,playButtons[newIndex]]
                     play(buttons)
                 }
 
         }
-        playButton.addEventListener('click',reproducir) 
-        playButton.parentNode.addEventListener('dblclick',()=>{
-            if(index!= 10)reproducir()
-        })   
+        playButton.addEventListener('click',e =>{
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            reproducir(index)
+        }) 
+
+        playButton.parentNode.addEventListener('dblclick',(e)=>{
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            if(index!= 10)reproducir(index)
+        }) 
+
+        changeButtons.forEach((cButton, ind)=>{
+            cButton.addEventListener('click',(e)=>{
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                if(ind == 1){
+                    if(newIndex < 9 ){
+                    
+                        reproducir(newIndex+1)
+                    }   
+                }else{
+                    if(newIndex > 0 ){
+                        reproducir(newIndex-1)
+                    }   
+                }
+            
+            })
+        })
         
     }) 
-   
     audio.onended = ()=>{changeICon('fa-play','fa-pause',playButtons)} 
 }

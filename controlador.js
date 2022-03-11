@@ -4,8 +4,8 @@ import {manejarReproductor} from './reproductor.js'
 import {reproducirCanciones} from './reproducirCanciones.js'
 
 let artistas = [
-    {uri:'https://api.spotify.com/v1/artists/5NGO30tJxFlKixkPSgXcFE/top-tracks?market=US',img:'img/thepolice.jpg'},
-    {uri: 'https://api.spotify.com/v1/artists/7bu3H8JO7d0UbMoVzbo70s/top-tracks?market=US',img:'img/thecure.webp'},
+    {uri:'https://api.spotify.com/v1/artists/0du5cEVh5yTK9QJze8zA0C/top-tracks?market=US',img:'img/brunomarsjpg.jpg'},
+    {uri:'https://api.spotify.com/v1/artists/7bu3H8JO7d0UbMoVzbo70s/top-tracks?market=US',img:'img/thecure.webp'},
     {uri:'https://api.spotify.com/v1/artists/5M52tdBnJaKSvOpJGz8mfZ/top-tracks?market=US',img:'img/bs.webp'},
     {uri:'https://api.spotify.com/v1/artists/2QsynagSdAqZj3U9HgDzjD/top-tracks?market=US',img:'img/bob.jpg'},
     {uri:'https://api.spotify.com/v1/artists/5eAWCfyUhZtHHtBdNk56l1/top-tracks?market=US',img:'img/soad.jpg'}
@@ -25,13 +25,13 @@ buttons.forEach((button,index)=>{
     button.addEventListener('click',async()=>{
         canciones = await consumirAPI(artistas[index].uri)
         checkAndExecute(index)
-        
+    
     })
          
 })
     
 
-function ejecutarFunciones(index) { 
+async function ejecutarFunciones(index) { 
     const styles = {
         backgroundSize:"100% 100%",
         backgroundRepeat: "no-repeat",
@@ -39,9 +39,9 @@ function ejecutarFunciones(index) {
     }
         banner.style.background = `url(${artistas[index].img})`
         Object.assign(banner.style, styles)
-        let newIndex = 0
-        songs = imprimirCanciones(canciones)
-        reproducirCanciones(songs,audio,newIndex)
+      
+        songs = await imprimirCanciones(canciones)
+        reproducirCanciones(songs,audio)
         manejarReproductor(audio)
 }
 

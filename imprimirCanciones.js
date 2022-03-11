@@ -31,8 +31,8 @@ export function imprimirCanciones(canciones){
         duration.textContent = msToMinutes(track.duration_ms)
 
         container.appendChild(cont)
-        
-        return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images}
+  
+        return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity}
     })
     return songNames
 }
