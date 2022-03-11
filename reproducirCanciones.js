@@ -58,49 +58,57 @@ export function reproducirCanciones(songs,audio){
 
     playButtons.forEach((playButton,index) =>{  
         
-        function reproducir(i){
-                console.log(i)
-                playButtons.forEach((btn,secondIndex)=>{
-                if(i != 10){                 
-                if(secondIndex != i){
-                            btn.classList.add('fa-play')
-                            btn.classList.remove('fa-pause')
-                            btn.parentNode.classList.remove("orange")
-                        }
-                    }
-                    
-                })
-                if(i !=10){  
-                    print(i)
+        function reproducir(botones,i){
 
-                    buttons = [playButton,playButtons[10]]
-                    newIndex = i
-                    playButtons[i].parentNode.classList.add("orange")
-                    
-    
-                    if(audio.src == songs[i].song){
-                        play(buttons)
-                    }else{
-                        audio.src = songs[i].song
-                        play(buttons) 
-                    } 
-                }else{
-                             
-                    buttons=[playButton,playButtons[newIndex]]
-                    play(buttons)
+            playButtons.forEach((btn,secondIndex)=>{
+            if(i != 10){                 
+            if(secondIndex != i){
+                        btn.classList.add('fa-play')
+                        btn.classList.remove('fa-pause')
+                        btn.parentNode.classList.remove("orange")
+                    }
                 }
+                
+            })
+            if(i !=10){  
+                print(i)
+                newIndex = i
+                playButtons[i].parentNode.classList.add("orange")
+                
+
+                if(audio.src == songs[i].song){
+                    play(botones)
+                }else{
+                    audio.src = songs[i].song
+                    play(botones) 
+                } 
+            }else{
+                            
+           
+                play(botones)
+
+            }
 
         }
         playButton.addEventListener('click',e =>{
             e.preventDefault();
             e.stopImmediatePropagation();
-            reproducir(index)
+
+            if(index != 10){
+                buttons = [playButton,playButtons[10]]
+                reproducir(buttons,index)
+            }else{
+                buttons=[playButton,playButtons[newIndex]]
+                reproducir(buttons,index)
+            }
+           
         }) 
 
         playButton.parentNode.addEventListener('dblclick',(e)=>{
             e.preventDefault();
             e.stopImmediatePropagation();
-            if(index!= 10)reproducir(index)
+            buttons = [playButton,playButtons[10]]
+            if(index!= 10)reproducir(buttons,index)
         }) 
 
         changeButtons.forEach((cButton, ind)=>{
@@ -109,12 +117,13 @@ export function reproducirCanciones(songs,audio){
                 e.stopImmediatePropagation();
                 if(ind == 1){
                     if(newIndex < 9 ){
-                    
-                        reproducir(newIndex+1)
+                        buttons = [playButtons[10],playButtons[newIndex+1]]
+                        reproducir(buttons,newIndex+1)
                     }   
                 }else{
                     if(newIndex > 0 ){
-                        reproducir(newIndex-1)
+                        buttons = [playButtons[10],playButtons[newIndex-1]]
+                        reproducir(buttons,newIndex-1)
                     }   
                 }
             

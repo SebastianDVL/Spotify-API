@@ -31,7 +31,13 @@ buttons.forEach((button,index)=>{
 })
     
 
-async function ejecutarFunciones(index) { 
+async function ejecutarFunciones() { 
+        songs = await imprimirCanciones(canciones)    
+        reproducirCanciones(songs,audio)
+        manejarReproductor(audio)
+}
+
+function checkAndExecute(index) {  
     const styles = {
         backgroundSize:"100% 100%",
         backgroundRepeat: "no-repeat",
@@ -39,20 +45,14 @@ async function ejecutarFunciones(index) {
     }
         banner.style.background = `url(${artistas[index].img})`
         Object.assign(banner.style, styles)
-      
-        songs = await imprimirCanciones(canciones)
-        reproducirCanciones(songs,audio)
-        manejarReproductor(audio)
-}
 
-function checkAndExecute(index) {  
     if(dataContainer.childElementCount == 0){
         header.removeAttribute('class')
         audioPlayer.classList.remove('invisible')
-        ejecutarFunciones(index)
+        ejecutarFunciones()
     }else{
         dataContainer.innerHTML = ""
-        ejecutarFunciones(index)
+        ejecutarFunciones()
     }
 
 }
