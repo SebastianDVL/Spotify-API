@@ -2,11 +2,15 @@ export function imprimirCanciones(canciones){
     const songTemplates = document.querySelector("[data-song-template]")
     const container = document.querySelector("[data-container]")
 
+    const reproductor = document.querySelector("[data-reproductor]").content.cloneNode(true).children[0]
+
     let msToMinutes = ms => {
         let minutos = Math.floor(ms / 60000);
         let segundos = ((ms % 60000) / 1000).toFixed(0);
         return minutos + ":" + (segundos < 10 ? '0' : '') + segundos;
      }
+
+    
 
     let nombreArtista = document.querySelector('.artista')
     nombreArtista.textContent = canciones.tracks[0].artists[0].name
@@ -34,6 +38,8 @@ export function imprimirCanciones(canciones){
         
         return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity,n:0}
     })
+    container.appendChild(reproductor)
+
     console.log(canciones)
     return songNames
 }

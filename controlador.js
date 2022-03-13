@@ -47,8 +47,7 @@ function checkAndExecute(index) {
         Object.assign(banner.style, styles)
 
     if(dataContainer.childElementCount == 0){
-        header.removeAttribute('class')
-        audioPlayer.classList.remove('invisible')
+        header.removeAttribute('class') 
         ejecutarFunciones()
     }else{
         dataContainer.innerHTML = ""
@@ -56,7 +55,7 @@ function checkAndExecute(index) {
     }
 
 }
-   
+
 
 
 

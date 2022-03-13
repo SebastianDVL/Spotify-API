@@ -53,7 +53,7 @@ export function reproducirCanciones(songs,audio){
     
     let newIndex = 0
     let buttons = []
-
+    
     let changeButtons = document.querySelectorAll('.change')
 
     playButtons.forEach((playButton,index) =>{  
