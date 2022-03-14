@@ -49,9 +49,12 @@ bottom: 0;
 clear: both;
 }
 
+.audio-player i{
+  color:#dc3545;
+}
 .cont > i:hover{
     transform: scale(1.1);
-    color: #cb673d !important;
+    color: #dc3545 !important;
     transition: 100ms;
     cursor: pointer;
 }
@@ -90,7 +93,7 @@ clear: both;
   }
 
   .timeline:hover,.volumeline:hover{
-    background-image: linear-gradient(#cb673d, #cb673d);
+    background-image: linear-gradient(#dc3545, #dc3545);
   }
 
   .timeline::-webkit-slider-thumb {
@@ -117,12 +120,12 @@ clear: both;
 
   
   .bt{
-      color: rgba(255, 255, 255, 0.8);
+    
       cursor: pointer;
   }
   .bt:hover{
       transform: scale(1.1);
-      color: white;
+      
   }
 
   .hide{
@@ -130,7 +133,7 @@ clear: both;
   }
 
 .orange{
-  color:#cb673d;
+  color:#dc3545;
 }
 
 header{

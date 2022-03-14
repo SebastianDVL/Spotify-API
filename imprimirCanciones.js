@@ -3,6 +3,7 @@ export function imprimirCanciones(canciones){
     const container = document.querySelector("[data-container]")
 
     const reproductor = document.querySelector("[data-reproductor]").content.cloneNode(true).children[0]
+    const r = document.querySelector('.r')
 
     let msToMinutes = ms => {
         let minutos = Math.floor(ms / 60000);
@@ -38,7 +39,7 @@ export function imprimirCanciones(canciones){
         
         return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity,n:0}
     })
-    container.appendChild(reproductor)
+    r.appendChild(reproductor)
 
     console.log(canciones)
     return songNames

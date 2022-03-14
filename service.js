@@ -8,3 +8,4 @@ export async function consumirAPI(URI){
     let canciones = res.json()
     return canciones
 }
+

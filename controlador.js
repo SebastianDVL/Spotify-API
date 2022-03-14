@@ -19,7 +19,7 @@ let canciones ={}
 let dataContainer = document.querySelector('[data-container]')
 let banner = document.querySelector('.banner')
 let header = document.querySelector('header')
-let audioPlayer = document.querySelector('.audio-player')
+let r = document.querySelector('.r')
 
 buttons.forEach((button,index)=>{
     button.addEventListener('click',async()=>{
@@ -50,6 +50,7 @@ function checkAndExecute(index) {
         header.removeAttribute('class') 
         ejecutarFunciones()
     }else{
+        r.innerHTML = ""
         dataContainer.innerHTML = ""
         ejecutarFunciones()
     }

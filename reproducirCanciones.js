@@ -30,8 +30,7 @@ export function reproducirCanciones(songs,audio){
             changeICon('fa-play','fa-pause',playButtons)
         }  
      }
-    
-    
+     
     audio.src = songs[0].song 
     songs[0].contenedor.classList.add("orange")
 
@@ -82,8 +81,7 @@ export function reproducirCanciones(songs,audio){
                     audio.src = songs[i].song
                     play(botones) 
                 } 
-            }else{
-                            
+            }else{          
            
                 play(botones)
 
@@ -119,7 +117,10 @@ export function reproducirCanciones(songs,audio){
                     if(newIndex < 9 ){
                         buttons = [playButtons[10],playButtons[newIndex+1]]
                         reproducir(buttons,newIndex+1)
-                    }   
+                    }else{
+                        buttons = [playButtons[10],playButtons[0]]
+                        reproducir(buttons,0)
+                    }
                 }else{
                     if(newIndex > 0 ){
                         buttons = [playButtons[10],playButtons[newIndex-1]]
@@ -129,7 +130,16 @@ export function reproducirCanciones(songs,audio){
             
             })
         })
-        
+        audio.onended = (e)=>{
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            if(newIndex < 9 ){
+                buttons = [playButtons[10],playButtons[newIndex+1]]
+                reproducir(buttons,newIndex+1)
+            }else{
+                changeICon('fa-play','fa-pause',playButtons)
+            }
+        }
     }) 
-    audio.onended = ()=>{changeICon('fa-play','fa-pause',playButtons)} 
+   
 }
