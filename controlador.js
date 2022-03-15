@@ -20,19 +20,20 @@ let dataContainer = document.querySelector('[data-container]')
 let banner = document.querySelector('.banner')
 let header = document.querySelector('header')
 let r = document.querySelector('.r')
+let infoConten = document.querySelectorAll(".d-hide")
 
 buttons.forEach((button,index)=>{
     button.addEventListener('click',async()=>{
         canciones = await consumirAPI(artistas[index].uri)
+       
         checkAndExecute(index)
     
-    })
-         
+    })     
 })
     
 
-async function ejecutarFunciones() { 
-        songs = await imprimirCanciones(canciones)    
+async function ejecutarFunciones(index) { 
+        songs = await imprimirCanciones(canciones,index)    
         reproducirCanciones(songs,audio)
         manejarReproductor(audio)
 }
@@ -48,11 +49,11 @@ function checkAndExecute(index) {
 
     if(dataContainer.childElementCount == 0){
         header.removeAttribute('class') 
-        ejecutarFunciones()
+        ejecutarFunciones(index)
     }else{
         r.innerHTML = ""
         dataContainer.innerHTML = ""
-        ejecutarFunciones()
+        ejecutarFunciones(index)
     }
 
 }

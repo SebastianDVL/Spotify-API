@@ -73,8 +73,7 @@ export function reproducirCanciones(songs,audio){
                 print(i)
                 newIndex = i
                 playButtons[i].parentNode.classList.add("orange")
-                
-
+                playButtons[i].classList.add("hoverState")
                 if(audio.src == songs[i].song){
                     play(botones)
                 }else{

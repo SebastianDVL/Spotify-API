@@ -17,22 +17,19 @@
     
 }
 
-.data-container{
-    margin-bottom: 12vh;
+.side{
+    margin-bottom: 18vh;
 }
 
 .cont{
   color:white;
-  background-color:#202020;
+  background-color:#111c2b;
 }
 
 .cont:hover{
-    background-color:#292929!important;
+    background-color:#172a44!important;
 }
 
-.cont:first-child{
-  margin-top:3em !important;
-}
 .n{
     width: 40px;
 }
@@ -134,6 +131,7 @@ clear: both;
 
 .orange{
   color:#dc3545;
+  background:#172a44;
 }
 
 header{
@@ -143,3 +141,12 @@ header{
 body{
   background-color:#202020;
 }
+
+.d-hide{
+  display: none !important;
+}
+
+h2{
+  color:#dc3545;
+}
+
