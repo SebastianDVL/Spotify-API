@@ -47,11 +47,23 @@ export function manejarReproductor(audio){
     let volumeIcon = document.querySelector('.volumeIcon')
     
     volumeIcon.addEventListener('click',()=>{
-
+        if(audio.volume == 0){
+            volumeline.value = 100
+            manageVolume(volumeline.value)
+        }else{
+            volumeline.value = 0
+            manageVolume(volumeline.value)
+        }
+        
     })
+
     volumeline.addEventListener('change',()=>{
     
-        let volume = volumeline.value / 100;
+       manageVolume(volumeline.value)
+    })
+
+    function manageVolume(volumeValue){
+        let volume = volumeValue/ 100;
         if(volume == 0){
             volumeIcon.classList.add("fa-volume-xmark")
             volumeIcon.classList.remove("fa-volume-high")
@@ -66,5 +78,5 @@ export function manejarReproductor(audio){
             volumeIcon.classList.add("fa-volume-low")
         }
         audio.volume = volume;
-    })
+    }
 }

@@ -1,26 +1,19 @@
 
 export function reproducirCanciones(songs,audio){
-   
-    songs.forEach(song => {
-        let play =  song.contenedor.querySelector(".fa-play")
-        song.contenedor.addEventListener('mouseover', () => { 
-           play.classList.toggle("invisible")
-        })
-        song.contenedor.addEventListener('mouseout', () => { 
-            play.classList.toggle("invisible")
-         })
-    })
+
     let playButtons = document.querySelectorAll(".playBtn")
-   
+    playButtons[0].classList.remove("invisible")
+
     let changeICon = (add,remove,playButtons)=>{
-        playButtons.forEach(playButton => {
-            playButton.classList.add(add)
-            playButton.classList.remove(remove)
-        })
-        
-     }
+            playButtons.forEach(playButton => {
+                playButton.classList.add(add)
+                playButton.classList.remove(remove)
+            })
+            
+    }
+
     changeICon('fa-play','fa-pause',playButtons)
-    
+
     let play = (playButtons)=>{
         if(audio.paused){
             audio.play()
@@ -29,7 +22,7 @@ export function reproducirCanciones(songs,audio){
             audio.pause()
             changeICon('fa-play','fa-pause',playButtons)
         }  
-     }
+    }
      
     audio.src = songs[0].song 
     songs[0].contenedor.classList.add("orange")
@@ -49,7 +42,7 @@ export function reproducirCanciones(songs,audio){
         popularity.textContent = `Popularity: ${songs[n].popularity}`
     }
     print(0)
-    
+
     let newIndex = 0
     let buttons = []
     
@@ -60,20 +53,22 @@ export function reproducirCanciones(songs,audio){
         function reproducir(botones,i){
 
             playButtons.forEach((btn,secondIndex)=>{
-            if(i != 10){                 
-            if(secondIndex != i){
+                if(i != 10){                 
+                    if(secondIndex != i){
                         btn.classList.add('fa-play')
                         btn.classList.remove('fa-pause')
                         btn.parentNode.classList.remove("orange")
+                        if(secondIndex !=10){
+                            btn.classList.add("invisible")
+                        }   
                     }
-                }
-                
+                }   
             })
             if(i !=10){  
                 print(i)
                 newIndex = i
                 playButtons[i].parentNode.classList.add("orange")
-                playButtons[i].classList.add("hoverState")
+                playButtons[i].classList.remove("invisible")
                 if(audio.src == songs[i].song){
                     play(botones)
                 }else{
@@ -81,11 +76,9 @@ export function reproducirCanciones(songs,audio){
                     play(botones) 
                 } 
             }else{          
-           
                 play(botones)
 
             }
-
         }
         playButton.addEventListener('click',e =>{
             e.preventDefault();
@@ -98,7 +91,6 @@ export function reproducirCanciones(songs,audio){
                 buttons=[playButton,playButtons[newIndex]]
                 reproducir(buttons,index)
             }
-           
         }) 
 
         playButton.parentNode.addEventListener('dblclick',(e)=>{
@@ -124,6 +116,9 @@ export function reproducirCanciones(songs,audio){
                     if(newIndex > 0 ){
                         buttons = [playButtons[10],playButtons[newIndex-1]]
                         reproducir(buttons,newIndex-1)
+                    }else{
+                        buttons = [playButtons[10],playButtons[9]]
+                        reproducir(buttons,9)
                     }   
                 }
             
@@ -140,5 +135,7 @@ export function reproducirCanciones(songs,audio){
             }
         }
     }) 
+
+    
    
 }

@@ -1,4 +1,12 @@
 
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+  width: 0px; 
+
+  }
 .banner{
     height: 75vh;
 }
@@ -17,8 +25,17 @@
     
 }
 
-.side{
-    margin-bottom: 18vh;
+[data-container]{
+    margin-bottom: 12vh;
+}
+
+@media only screen and (max-width:992px){
+  [data-container]{
+    margin-bottom:0;
+  }
+  .side{
+    margin-bottom: 12vh;
+  }
 }
 
 .cont{
@@ -28,6 +45,10 @@
 
 .cont:hover{
     background-color:#172a44!important;
+}
+
+.cont:hover .invisible{
+  visibility:visible !important;
 }
 
 .n{
@@ -45,6 +66,7 @@ height: 12vh;
 bottom: 0;
 clear: both;
 }
+
 
 .audio-player i{
   color:#dc3545;
@@ -116,7 +138,7 @@ clear: both;
   }
 
   
-  .bt{
+  .bt,.volumeIcon{
     
       cursor: pointer;
   }
