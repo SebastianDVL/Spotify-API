@@ -49,9 +49,11 @@ export function manejarReproductor(audio){
     volumeIcon.addEventListener('click',()=>{
         if(audio.volume == 0){
             volumeline.value = 100
+            volumeline.style.backgroundSize = '100% 100%'
             manageVolume(volumeline.value)
         }else{
             volumeline.value = 0
+            volumeline.style.backgroundSize = '0% 100%'
             manageVolume(volumeline.value)
         }
         

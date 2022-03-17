@@ -48,10 +48,20 @@ export function reproducirCanciones(songs,audio){
     
     let changeButtons = document.querySelectorAll('.change')
 
+    
     playButtons.forEach((playButton,index) =>{  
         
         function reproducir(botones,i){
-
+            function hideOrShowWaves(p) {   
+                if(audio.paused){
+                    playButtons[p].parentNode.querySelector('.number').classList.add("d-hide")
+                    playButtons[p].parentNode.querySelector('#bar').classList.remove("d-hide")
+                }else{
+                    playButtons[p].parentNode.querySelector('.number').classList.toggle("d-hide")
+                    playButtons[p].parentNode.querySelector('#bar').classList.toggle("d-hide")
+                } 
+            }
+            
             playButtons.forEach((btn,secondIndex)=>{
                 if(i != 10){                 
                     if(secondIndex != i){
@@ -60,6 +70,8 @@ export function reproducirCanciones(songs,audio){
                         btn.parentNode.classList.remove("orange")
                         if(secondIndex !=10){
                             btn.classList.add("invisible")
+                            btn.parentNode.querySelector(".number").classList.remove("d-hide")
+                            btn.parentNode.querySelector('#bar').classList.add("d-hide")
                         }   
                     }
                 }   
@@ -69,13 +81,17 @@ export function reproducirCanciones(songs,audio){
                 newIndex = i
                 playButtons[i].parentNode.classList.add("orange")
                 playButtons[i].classList.remove("invisible")
+               
+                hideOrShowWaves(i)
+                
                 if(audio.src == songs[i].song){
                     play(botones)
                 }else{
                     audio.src = songs[i].song
                     play(botones) 
                 } 
-            }else{          
+            }else{
+                hideOrShowWaves(newIndex)
                 play(botones)
 
             }
