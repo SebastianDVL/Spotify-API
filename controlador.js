@@ -25,13 +25,11 @@ let r = document.querySelector('.r')
 buttons.forEach((button,index)=>{
     button.addEventListener('click',async()=>{
         canciones = await consumirAPI(artistas[index].uri)
-       
         checkAndExecute(index)
     
     })     
 })
     
-
 async function ejecutarFunciones(index) { 
         songs = await imprimirCanciones(canciones,index)    
         reproducirCanciones(songs,audio)

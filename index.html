@@ -38,10 +38,18 @@
         </div>
         <div class="row row-cols-1 row-cols-lg-2 ">
             <div class="col">
-                <div class="row">
-
+                <div class="row px-3 mt-3 text-white w-100">
+                    <div class="col d-flex w-100 mb-2">
+                        <div>
+                            
+                        </div>
+                        <i class="fa-solid fa-hashtag mx-4"></i>
+                        <h5>Title / Album</h5>
+                        <i class="ml-auto fa-solid fa-clock"></i>
+                    </div> 
                 </div>
-                <div class="row p-3"data-container>
+                
+                <div class="row px-3 pb-3"data-container>
                     
                    
                 </div>
@@ -54,11 +62,11 @@
                     The Pixies are associated with the 1990s alternative rock boom, and draw on elements including punk rock and surf rock. Their music is known for its dynamic "loud-quiet-loud" shifts and song structures. Francis is the Pixies' primary songwriter; his often surreal lyrics cover offbeat subjects such as extraterrestrials, incest, and biblical violence. They achieved modest popularity in the US but were more successful in Europe. Their jarring pop sound influenced acts such as Nirvana, Radiohead, the Smashing Pumpkins, and Weezer. Their popularity grew in the years after their break-up, leading to a 2004 reunion and sold-out world tours.
                 </p>
                 <p class="d-hide">
-                 The Cure are an English rock band formed in 1978 in Crawley, West Sussex.[1][2][3] Throughout numerous lineup changes since the band's formation, guitarist, lead vocalist, and songwriter Robert Smith has remained the only constant member. The band's debut album was Three Imaginary Boys (1979) and this, along with several early singles, placed the band in the post-punk and new wave movements that had sprung up in the United Kingdom. Beginning with their second album, Seventeen Seconds (1980), the band adopted a new, increasingly dark and tormented style, which, together with Smith's stage look, had a strong influence on the emerging genre of gothic rock as well as the subculture that eventually formed around the genre.<br><br>
+                 The Cure are an English rock band formed in 1978 in Crawley, West Sussex. Throughout numerous lineup changes since the band's formation, guitarist, lead vocalist, and songwriter Robert Smith has remained the only constant member. The band's debut album was Three Imaginary Boys (1979) and this, along with several early singles, placed the band in the post-punk and new wave movements that had sprung up in the United Kingdom. Beginning with their second album, Seventeen Seconds (1980), the band adopted a new, increasingly dark and tormented style, which, together with Smith's stage look, had a strong influence on the emerging genre of gothic rock as well as the subculture that eventually formed around the genre.<br><br>
                  Following the release of their fourth album Pornography in 1982, the band's future was uncertain. Smith was keen to move past the gloomy reputation his band had acquired, introducing a greater pop sensibility into the band's music. Songs such as "Let's Go to Bed" (1982), "The Love Cats" (1983), "Inbetween Days" (1985), "Close To Me" (1985), "Just Like Heaven" (1987), "Lovesong" (1989), and "Friday I'm in Love" (1992) aided the band in receiving commercial popularity. The band have released 13 studio albums, two EPs, over 30 singles, and have sold over 30 million albums worldwide.
- <br><br>
- The Cure were inducted into the Rock and Roll Hall of Fame in 2019.
-                </p>
+                    <br><br>
+                    The Cure were inducted into the Rock and Roll Hall of Fame in 2019.
+                                    </p>
                 <p class="d-hide">
                  Black Sabbath were an English rock band formed in Birmingham in 1968 by guitarist Tony Iommi, drummer Bill Ward, bassist Geezer Butler and vocalist Ozzy Osbourne. They are often cited as pioneers of heavy metal music.[1] The band helped define the genre with releases such as Black Sabbath (1970), Paranoid (1970), and Master of Reality (1971). The band had multiple line-up changes following Osbourne's departure in 1979, with Iommi being the only constant member throughout its history. <br><br>Black Sabbath have sold over 70 million records worldwide as of 2013, making them one of the most commercially successful heavy metal bands. They were ranked by MTV as the "Greatest Metal Band" of all time, and placed second in VH1's "100 Greatest Artists of Hard Rock" list. Rolling Stone magazine ranked them number 85 on their "100 Greatest Artists of All Time". Black Sabbath were inducted into the UK Music Hall of Fame in 2005 and the Rock and Roll Hall of Fame in 2006. They have also won two Grammy Awards for Best Metal Performance, and in 2019 the band were presented a Grammy Lifetime Achievement Award.
                 </p>
@@ -82,32 +90,32 @@
     </div>
  
     <template data-reproductor>
-         <div class="audio-player row row-cols-1 row-cols-md-3 py-3 m-0">
-        <div class="col d-none d-md-flex h-100">       
-                <img src="" class="">
-                <div class="ms-3 d-flex flex-column text-white"><h6 class="nombre m-0 p-0"></h6><em class="m-0 p-0"></em><small class="m-0 p-0 "></small></div>
-          
-        </div>
-        <div class="col d-flex flex-column h-100 justify-content-around align-items-center">
-            <div class="d-flex justify-content-evenly w-50">
-                <i class="fa-solid fa-backward-step fs-3 bt change"></i>
-                  <i class="fa-solid fa-play fs-3 bt playBtn"></i>
-                  <i class="fa-solid fa-forward-step fs-3 bt change"></i>
+        <div class="audio-player row row-cols-1 row-cols-md-3 align-items-center py-3 m-0">
+            <div class="col d-none d-md-flex h-min">       
+                    <img src="">
+                    <div class="ms-3 d-flex flex-column text-white"><h6 class="nombre m-0 p-0"></h6><em class="m-0 p-0"></em><small class="m-0 p-0 "></small></div>
+            
             </div>
-          
-             <input type="range" class="timeline" max="100" value="0">
-        </div>
-        <div class="col h-100 d-flex flex-row-reverse align-items-center p-3">
-            <input type="range" class="volumeline" max="100" value="100">
-            <i class="fa-solid fa-volume-high fs-5 me-3 volumeIcon "></i>
+            <div class="col d-flex flex-column h-min justify-content-around align-items-center">
+                <div class="d-flex justify-content-evenly w-50 mb-3">
+                    <i class="fa-solid fa-backward-step fs-3 bt change"></i>
+                    <i class="fa-solid fa-play fs-3 bt playBtn"></i>
+                    <i class="fa-solid fa-forward-step fs-3 bt change"></i>
+                </div>
+            
+                <input type="range" class="timeline" max="100" value="0">
+            </div>
+            <div class="col h-min  d-md-flex flex-row-reverse align-items-center p-3">
+                <input type="range" class="volumeline" max="100" value="100">
+                <i class="fa-solid fa-volume-high fs-5 me-3 volumeIcon"></i>
+                
+            </div>
             
         </div>
-        
-    </div>
     </template>
    
     <template data-song-template>
-        <div class="cont py-2 my-1 ps-2 pe-5 d-flex align-items-center justify-content-between">
+        <div class="cont py-2 my-2 ps-2 pe-5 d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center w-75">
                 <div class="n d-flex align-items-center justify-content-center mx-2 position-relative">
                     <h6 class="number"></h6>
