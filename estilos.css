@@ -37,23 +37,34 @@ html {
     margin-bottom: 14vh;
   }
 
-  .audio-player div:last-child{
-    display:none;
+  .audio-player div:last-child,.duration,.fa-clock{
+    display:none !important;
   }
+  .cont > div{
+    width: 100% !important;
+  }
+ 
 }
 
 .cont{
   color:white;
-  background-color:#111c2b;
+  background-color:#202020;
 }
 
 .cont:hover{
-    background-color:#172a44!important;
+    background-color:#353333!important;
 }
 
 .cont:hover .invisible{
   visibility:visible !important;
 }
+.cont > i:hover{
+  transform: scale(1.1);
+
+  transition: 100ms;
+  cursor: pointer;
+}
+
 
 .n{
     width: 40px;
@@ -65,30 +76,22 @@ small{
 .audio-player{
 width: 100%;
 position:fixed;
-background-color: #171717;
+background:url("img/\'b4db3050.png\'");
 height: 14vh;
 bottom: 0;
 clear: both;
 }
  @media only screen and (min-width:992px){
   .audio-player{
-    height: 11vh;
+    height: 12vh;
   }
 } 
-
-
-
 
 
 .audio-player i{
   color:#dc3545;
 }
-.cont > i:hover{
-    transform: scale(1.1);
 
-    transition: 100ms;
-    cursor: pointer;
-}
 .volumeline {
     -webkit-appearance: none;
 
@@ -165,11 +168,11 @@ clear: both;
 
 .orange{
   color:#dc3545;
-  background:#172a44;
+  background:#353333;
 }
 
 header{
-  background:url("img/\'b4db3050.png\'")
+  background:url("img/\'b4db3050.png\'");
 }
 
 body{
@@ -184,21 +187,12 @@ h2{
   color:#dc3545;
 }
 
-#bars {
-  height: 30px;
-  left: 50%;
-  margin: -30px 0 0 -20px;
-  position: absolute;
-  top: 50%;
-  width: 40px;
-}
-
 .bar {
  background: #E20074;
-  bottom: 1px;
-  height: 3px;
+  bottom: -29px;
+  height: 10px;
   position: absolute;
-  width: 3px;      
+  width: 1px;      
   animation: sound 0ms -800ms linear infinite alternate;
 }
 
@@ -209,7 +203,7 @@ h2{
   }
   100% {
       opacity: 1;       
-      height: 28px;        
+      height: 40px;        
   }
 }
 
@@ -219,4 +213,18 @@ h2{
 .bar:nth-child(4)  { left: 13px; animation-duration: 458ms; }
 .bar:nth-child(5)  { left: 17px; animation-duration: 400ms; }
 .bar:nth-child(6)  { left: 21px; animation-duration: 427ms; }
+.bar:nth-child(7)  { left: 25px; animation-duration: 309ms; }
+.bar:nth-child(8)  { left: 29px; animation-duration: 446ms; }
 
+.artista{
+  text-shadow: rgba(0, 0, 0) 1px 1px 3px;
+}
+
+.random{
+  color:#57171d !important;
+  left: -25px;
+}
+
+.on{
+  color:#dc3545 !important;
+}

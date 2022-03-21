@@ -81,4 +81,6 @@ export function manejarReproductor(audio){
         }
         audio.volume = volume;
     }
+
+ 
 }

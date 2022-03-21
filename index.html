@@ -19,19 +19,19 @@
                 <h1 class="mb-5">Choose An Artist</h1>
             </div>
             <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 g-2 w-75">
-            <div class="col"><button class="btn btn-outline-danger text-white w-100">Pixies</button></div>   
-            <div class="col"><button class="btn btn-outline-danger text-white w-100">The Cure</button></div> 
-            <div class="col"><button class="btn btn-outline-danger text-white w-100">Black Sabbath</button></div>    
-            <div class="col"><button class="btn btn-outline-danger text-white w-100">Soda Stereo</button></div>   
-            <div class="col"><button class="btn btn-outline-danger text-white w-100">Red Hot Chili Peppers</button></div> 
+            <div class="col"><button class="btn btn-outline-danger text-white w-100"><i class="fa-solid fa-circle-play me-2"></i>Pixies</button></div>   
+            <div class="col"><button class="btn btn-outline-danger text-white w-100"><i class="fa-solid fa-circle-play me-2"></i>The Cure</button></div> 
+            <div class="col"><button class="btn btn-outline-danger text-white w-100"><i class="fa-solid fa-circle-play me-2"></i>Black Sabbath</button></div>    
+            <div class="col"><button class="btn btn-outline-danger text-white w-100"><i class="fa-solid fa-circle-play me-2"></i>Soda Stereo</button></div>   
+            <div class="col"><button class="btn btn-outline-danger text-white w-100"><i class="fa-solid fa-circle-play me-2"></i>Red Hot Chili Peppers</button></div> 
             </div>
          
         </div>
     </header>
     <div class="container-fluid">
         <div class="row banner">
-            <div class="d-flex p-5">
-               <h1 class="align-self-end artista"></h1> 
+            <div class="d-flex justify-content-center align-items-end p-5">
+               <h1 class=" artista"></h1> 
                 
             </div>
             
@@ -39,13 +39,11 @@
         <div class="row row-cols-1 row-cols-lg-2 ">
             <div class="col">
                 <div class="row px-3 mt-3 text-white w-100">
-                    <div class="col d-flex w-100 mb-2">
-                        <div>
-                            
-                        </div>
-                        <i class="fa-solid fa-hashtag mx-4"></i>
-                        <h5>Title / Album</h5>
-                        <i class="ml-auto fa-solid fa-clock"></i>
+                    <div class="col d-flex w-100 mb-2 justify-content-between align-items-center">
+                      
+                        <i class="ms-4 fa-solid fa-hashtag "></i>
+                        <h5 class="w-100 ms-5 ps-5">Title / Album</h5>
+                        <i class= "fa-solid fa-clock me-3"></i>
                     </div> 
                 </div>
                 
@@ -54,7 +52,7 @@
                    
                 </div>
             </div>
-            <div class="col  side text-white p-4 fs-5 side">
+            <div class="col  side text-white px-5 py-3 fs-5 side">
                 <h2>About</h2>
                 <p class="d-hide">
                     The Pixies are an American alternative rock band formed in 1986 in Boston, Massachusetts. Until 2013, the band comprised Black Francis (vocals, rhythm guitar, songwriter), Joey Santiago (lead guitar), Kim Deal (bass, backing vocals) and David Lovering (drums). The band disbanded acrimoniously in 1993 but reunited in 2004. After Deal left in 2013, the Pixies hired Kim Shattuck as a touring bassist; she was replaced that year by Paz Lenchantin, who became a permanent member in 2016.
@@ -97,7 +95,8 @@
             
             </div>
             <div class="col d-flex flex-column h-min justify-content-around align-items-center">
-                <div class="d-flex justify-content-evenly w-50 mb-3">
+                <div class="d-flex justify-content-evenly w-50 mb-3 position-relative">
+                    <i class="fa-solid fa-shuffle fs-3  position-absolute random bt  "></i>
                     <i class="fa-solid fa-backward-step fs-3 bt change"></i>
                     <i class="fa-solid fa-play fs-3 bt playBtn"></i>
                     <i class="fa-solid fa-forward-step fs-3 bt change"></i>
@@ -126,15 +125,16 @@
                         <div class="bar"></div>
                         <div class="bar"></div>
                         <div class="bar"></div>
-                       
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        
                     </div>
                 </div>
-            <!-- <i class="fa-solid fa-music invisible position-absolute left-50 top-50 translate-middle"></i> -->
                 <img src="" class="me-2">
-                <div class="ms-3"><h5 class="nombre m-0 p-0"></h5><p class="m-0 p-0"></p><small class="m-0 p-0"></small></div>
+                <div class="ms-2"><h5 class="nombre m-0 p-0"></h5><p class="m-0 p-0"></p><small class="m-0 p-0"></small></div>
             
             </div>
-            <i class="fa-solid fa-play fs-3 invisible playBtn"></i>
+            <i class="fa-solid fa-play fs-3 ms-2 invisible playBtn"></i>
      
             
             <h6 class="ml-auto duration text-muted fw-normal"></h6>
