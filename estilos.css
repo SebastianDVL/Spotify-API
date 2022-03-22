@@ -28,7 +28,6 @@ html {
 [data-container]{
     margin-bottom: 14vh;
 }
-
 @media only screen and (max-width:992px){
   [data-container]{
     margin-bottom:0;
@@ -36,20 +35,60 @@ html {
   .side{
     margin-bottom: 14vh;
   }
+}
 
-  .audio-player div:last-child,.duration,.fa-clock{
+@media only screen and (max-width:767px){
+
+  .side{
+    margin-bottom: 30vh;
+  }
+  .audio-player .flex-row-reverse,.duration,.fa-clock{
     display:none !important;
+  }
+  .cont .playBtn{
+    position: absolute !important;
+    left:98px;
+    filter: drop-shadow(1px 1px 1px black);
   }
   .cont > div{
     width: 100% !important;
   }
- 
+
+  .cont{
+    padding-right: 0px !important;
+  }
+
+  .audio-player{
+    height:28vh !important;
+  }
+  .inf{
+    margin: auto;
+    width: max-content;
+  }
+  
+}
+@media only screen and (max-width:600px){
+  .cont .nombre{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cont .f{
+    width:300px;
+  }
+}
+
+@media only screen and (min-height:800px){
+  .audio-player{
+    height: 11vh !important;
+  }
 }
 
 .cont{
   color:white;
   background-color:#202020;
 }
+
 
 .cont:hover{
     background-color:#353333!important;
@@ -83,7 +122,7 @@ clear: both;
 }
  @media only screen and (min-width:992px){
   .audio-player{
-    height: 12vh;
+    height: 14vh;
   }
 } 
 
