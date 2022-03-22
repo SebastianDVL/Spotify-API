@@ -78,7 +78,7 @@ html {
   }
 }
 
-@media only screen and (min-height:800px){
+@media (min-height:800px) and (min-width:767px){
   .audio-player{
     height: 11vh !important;
   }
@@ -257,6 +257,7 @@ h2{
 
 .artista{
   text-shadow: rgba(0, 0, 0) 1px 1px 3px;
+  font-size: 8em !important;
 }
 
 .random{
@@ -266,4 +267,11 @@ h2{
 
 .on{
   color:#dc3545 !important;
+}
+
+header h1{
+  font-size: 5.5em !important;
+  text-align: center;
+  color:#dc3545;
+  text-shadow: #fff 2px 1px 1px;
 }

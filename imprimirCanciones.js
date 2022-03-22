@@ -1,3 +1,5 @@
+import { data} from "./firebase.js"
+
 export function imprimirCanciones(canciones,n){
     const songTemplates = document.querySelector("[data-song-template]")
     const container = document.querySelector("[data-container]")
@@ -7,6 +9,7 @@ export function imprimirCanciones(canciones,n){
 
     const spotifyRef = document.querySelector('.spotifyLink')
     spotifyRef.href = canciones.tracks[0].artists[0].external_urls.spotify
+
     let msToMinutes = ms => {
         let minutos = Math.floor(ms / 60000);
         let segundos = ((ms % 60000) / 1000).toFixed(0);
@@ -40,20 +43,23 @@ export function imprimirCanciones(canciones,n){
         
         return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity}
     })
+    
     r.appendChild(reproductor)
 
     console.log(canciones)
 
-    let infos = document.querySelectorAll('.side p')
+    let infos = document.querySelector('.side p')
 
-
-    infos.forEach((info,index)=>{
-        if (index === n){
-            info.classList.remove('d-hide')
-        }else{
-            info.classList.add("d-hide")
-        }
-    })
+    infos.innerHTML = data._snapshot.docChanges[n].doc.data.value.mapValue.fields.historia.stringValue
 
     return songNames
 }
+
+Array.prototype.move = function (from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0]);
+}
+
+data._snapshot.docChanges.move(1,0)
+data._snapshot.docChanges.move(4,1)
+data._snapshot.docChanges.move(2,3)
+

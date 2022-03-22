@@ -11,7 +11,6 @@ let artistas = [
     {uri:'https://api.spotify.com/v1/artists/0L8ExT028jH3ddEcZwqJJ5/top-tracks?market=US',img:'img/red.jpg'}
 ]
  
-
 let buttons = document.querySelectorAll('.btn')
 let audio = document.querySelector("audio")
 let songs = {}
@@ -20,13 +19,13 @@ let dataContainer = document.querySelector('[data-container]')
 let banner = document.querySelector('.banner')
 let header = document.querySelector('header')
 let r = document.querySelector('.r')
+let infos = document.querySelectorAll('.side p')
 
 
 buttons.forEach((button,index)=>{
     button.addEventListener('click',async()=>{
         canciones = await consumirAPI(artistas[index].uri)
         checkAndExecute(index)
-    
     })     
 })
     
@@ -49,6 +48,7 @@ function checkAndExecute(index) {
         header.removeAttribute('class') 
         ejecutarFunciones(index)
     }else{
+        infos.innerHTML = ""
         r.innerHTML = ""
         dataContainer.innerHTML = ""
         ejecutarFunciones(index)

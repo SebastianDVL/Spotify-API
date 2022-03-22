@@ -6,11 +6,10 @@ export function reproducirCanciones(songs,audio){
 
     // Funcion para cambiar el icono dependiendo de si esta reproduciendo o pausado el audio
     let changeICon = (add,remove,playButtons)=>{
-            playButtons.forEach(playButton => {
-                playButton.classList.add(add)
-                playButton.classList.remove(remove)
-            })
-            
+        playButtons.forEach(playButton => {
+            playButton.classList.add(add)
+            playButton.classList.remove(remove)
+        })          
     }
 
     //Cambiar Todos los iconos por defecto a play
@@ -91,7 +90,7 @@ export function reproducirCanciones(songs,audio){
                     playButtons[p].parentNode.querySelector('#bar').classList.toggle("d-hide")
                 } 
             }
-            
+        
             //Se quitan los estilos de cancion actual al resto de las canciones exceptuando la actual
             playButtons.forEach((btn,secondIndex)=>{
                 if(i != 10){                 
@@ -110,14 +109,15 @@ export function reproducirCanciones(songs,audio){
             //se reproduce la cancion y se le da estilo a sus respectivos botones y contenedor dependiendo del boton que precione, ya sea del reproductos o de la cancion en si
             if(i !=10){  
                 print(i)
+
                 newIndex = i
+
                 playButtons[i].parentNode.classList.add("orange")
-                playButtons[i].classList.remove("invisible")
-                
+                playButtons[i].classList.remove("invisible")   
+
                 if(i != numeros[numeros.length - 1]){
-                      numeros.push(i)
+                    numeros.push(i)
                 }
-              
                 console.log(numeros)
                 hideOrShowWaves(i)
                 
@@ -168,7 +168,6 @@ export function reproducirCanciones(songs,audio){
                             randomNumber = Math.floor(Math.random() * 10)      
                         }  
                         reproducir([playButtons[10],playButtons[randomNumber]],randomNumber)
-
                     }else{
                         if(newIndex < 9 ){
                             buttons = [playButtons[10],playButtons[newIndex+1]]
@@ -177,16 +176,14 @@ export function reproducirCanciones(songs,audio){
                             buttons = [playButtons[10],playButtons[0]]
                             reproducir(buttons,0)
                         } 
-                    }
-                                      
+                    }                                     
                 }else{
                     if(numeros.length > 1){
-                         numeros.pop()
+                        numeros.pop()
                         buttons = [playButtons[10],playButtons[numeros[numeros.length -1]]]
                         reproducir(buttons,numeros[numeros.length -1])
                     }             
-                }
-            
+                }       
             })
         })
 
@@ -194,15 +191,14 @@ export function reproducirCanciones(songs,audio){
         audio.onended = (e)=>{
             e.preventDefault();
             e.stopImmediatePropagation();
-
             if(sw){
                 randomNumber = Math.floor(Math.random() * 10)      
-                        while(randomNumber == newIndex){
-                            randomNumber = Math.floor(Math.random() * 10)      
-                        }  
-                        reproducir([playButtons[10],playButtons[randomNumber]],randomNumber)
+                while(randomNumber == newIndex){
+                    randomNumber = Math.floor(Math.random() * 10)      
+                }  
+                reproducir([playButtons[10],playButtons[randomNumber]],randomNumber)
             }else{
-                 if(newIndex < 9 ){
+                if(newIndex < 9 ){
                     buttons = [playButtons[10],playButtons[newIndex+1]]
                     reproducir(buttons,newIndex+1)
                 }else{
@@ -210,11 +206,7 @@ export function reproducirCanciones(songs,audio){
                     playButtons[9].parentNode.querySelector('#bar').classList.toggle("d-hide")
                     changeICon('fa-play','fa-pause',playButtons)
                 }
-            }
-           
+            }    
         }
-    }) 
-   
-    
-   
+    })  
 }
