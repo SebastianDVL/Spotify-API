@@ -41,7 +41,7 @@ export function imprimirCanciones(canciones,n){
 
         container.appendChild(cont)
         
-        return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity}
+        return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity,artista:canciones.tracks[0].artists[0].name}
     })
     
     r.appendChild(reproductor)

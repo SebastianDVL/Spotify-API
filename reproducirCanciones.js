@@ -1,6 +1,6 @@
 
 export function reproducirCanciones(songs,audio){
-    //llamo a todos los botones de de play
+    //llamo a todos los botones de play
     let playButtons = document.querySelectorAll(".playBtn")
     playButtons[0].classList.remove("invisible")
 
@@ -16,13 +16,19 @@ export function reproducirCanciones(songs,audio){
     changeICon('fa-play','fa-pause',playButtons)
 
 
-    //funcion  para reproducir audio si esta pausado o pausar si esta reproduciendo y llamando a la funcion de cambiar el icono
-    let play = (playButtons)=>{
+    //funcion  para reproducir audio si esta pausado o pausar si esta reproduciendo y llamando a la funcion de cambiar el icono 
+    
+        //variable que referencia el titulo del documento para cambiarlos por el nombre de la cancion actual que se esta reproduciendo
+        let title = document.querySelector('title') 
+        title.innerHTML = "Spotify | Sebastian"
+    let play = (playButtons,n)=>{
         if(audio.paused){
             audio.play()
+            title.innerHTML = `${songs[n].titulo.split("-")[0]} - ${songs[0].artista}`
             changeICon('fa-pause','fa-play',playButtons)  
         }else{
             audio.pause()
+            title.innerHTML = "Spotify | Sebastian"
             changeICon('fa-play','fa-pause',playButtons)
         }  
     }
@@ -40,6 +46,7 @@ export function reproducirCanciones(songs,audio){
     let name = audioPlayer.querySelector('.nombre')
     let album = audioPlayer.querySelector('em')
     let popularity = audioPlayer.querySelector('small')
+ 
 
     //funcion para para pintar los datos de la cancion actual que se esta reproduciendo en el reproductor
     function print(n){
@@ -49,11 +56,12 @@ export function reproducirCanciones(songs,audio){
         img.height = songs[n].img[2].height
         img.width = songs[n].img[2].width
         popularity.textContent = `Popularity: ${songs[n].popularity}`
+       
     }
     //se pinta los datos de la primera cancion que esta por defecto al cargar el artista
     print(0)
 
-    //declaro un nuevo index que servira para tener control de cual es la cancion que se estara reproduciendo (por defecto la primera)
+    //declaro un nuevo index que servira para tener control de cual es la cancion que se estara sonando(por defecto la primera) desde los botones del reproductor
     let newIndex = 0
 
     //declaro un array de botones, los dos botones que seran condigurados con la funcion "changeIcon" de arriba cuando se reproduzca una cancion
@@ -75,22 +83,26 @@ export function reproducirCanciones(songs,audio){
     })
     let numeros = [0]
     let randomNumber
+
+
     //Se llama a todos los botones para sus respectivas funciones
     playButtons.forEach((playButton,index) =>{  
         
         //funcion de reproducir con parametros de botones a estilar o cambiar e index del boton y cancion a reproducir
         function reproducir(botones,i){
             //funcion para mostrar efecto de animacion de musica sonando cuando la cancion se este reproduciendo
-            function hideOrShowWaves(p) {   
+            function hideOrShowWaves(p) { 
+              
                 if(audio.paused){
                     playButtons[p].parentNode.querySelector('.number').classList.add("d-hide")
                     playButtons[p].parentNode.querySelector('#bar').classList.remove("d-hide")
+        
                 }else{
                     playButtons[p].parentNode.querySelector('.number').classList.toggle("d-hide")
                     playButtons[p].parentNode.querySelector('#bar').classList.toggle("d-hide")
                 } 
             }
-        
+          
             //Se quitan los estilos de cancion actual al resto de las canciones exceptuando la actual
             playButtons.forEach((btn,secondIndex)=>{
                 if(i != 10){                 
@@ -107,7 +119,8 @@ export function reproducirCanciones(songs,audio){
                 }   
             })
             //se reproduce la cancion y se le da estilo a sus respectivos botones y contenedor dependiendo del boton que precione, ya sea del reproductos o de la cancion en si
-            if(i !=10){  
+            if(i !=10){ 
+
                 print(i)
 
                 newIndex = i
@@ -122,14 +135,15 @@ export function reproducirCanciones(songs,audio){
                 hideOrShowWaves(i)
                 
                 if(audio.src == songs[i].song){
-                    play(botones)
+                    play(botones,i)
                 }else{
                     audio.src = songs[i].song
-                    play(botones) 
+                    play(botones,i) 
                 } 
             }else{
+              
                 hideOrShowWaves(newIndex)
-                play(botones)
+                play(botones,newIndex)
 
             }
         }
@@ -163,7 +177,7 @@ export function reproducirCanciones(songs,audio){
                 e.stopImmediatePropagation();
                 if(ind == 1){
                     if(sw){
-                        randomNumber = Math.floor(Math.random() * 10)      
+                        randomNumber = Math.floor(Math.random() * 10)     
                         while(randomNumber == newIndex){
                             randomNumber = Math.floor(Math.random() * 10)      
                         }  
@@ -207,6 +221,14 @@ export function reproducirCanciones(songs,audio){
                     changeICon('fa-play','fa-pause',playButtons)
                 }
             }    
+        }
+        document.body.onkeyup = function(e) {    
+            if (e.key == " " || e.code == "Space" ||  e.keyCode == 32 && e.target == document.body) {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+                buttons=[playButton,playButtons[newIndex]]
+                reproducir(buttons,index)
+            }
         }
     })  
 }
