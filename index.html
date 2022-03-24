@@ -17,15 +17,15 @@
     <header class ="position-fixed h-100 w-100 d-flex">
         <div class="container-fluid d-flex w-100 p-5 h-100 text-white flex-column align-items-center justify-content-evenly">
             <div>
-                <h1 class="mb-5">Choose An Artist</h1>
-                
+                <h1 class="mb-5">Search An Artist</h1>
+                <input type="search" class="form-control" id="searchArtist" placeholder="Discover Top 10 track's of any artist ...">
             </div>
-            <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 g-2 w-75">
-            <div class="col"><button class="btn btn-outline-danger text-white w-100 fw-bold p-2"><i class="fa-solid fa-circle-play me-2"></i>Pixies</button></div>   
+            <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 g-2 w-75" data-container-artists>
+            <!-- <div class="col"><button class="btn btn-outline-danger text-white w-100 fw-bold p-2"><i class="fa-solid fa-circle-play me-2"></i>Pixies</button></div>   
             <div class="col"><button class="btn btn-outline-danger text-white w-100 fw-bold p-2"><i class="fa-solid fa-circle-play me-2"></i>The Cure</button></div> 
             <div class="col"><button class="btn btn-outline-danger text-white w-100 fw-bold p-2"><i class="fa-solid fa-circle-play me-2"></i>Black Sabbath</button></div>    
             <div class="col"><button class="btn btn-outline-danger text-white w-100 fw-bold p-2"><i class="fa-solid fa-circle-play me-2"></i>Soda Stereo</button></div>   
-            <div class="col"><button class="btn btn-outline-danger text-white w-100 fw-bold p-2"><i class="fa-solid fa-circle-play me-2"></i>Red Hot Chili Peppers</button></div> 
+            <div class="col"><button class="btn btn-outline-danger text-white w-100 fw-bold p-2"><i class="fa-solid fa-circle-play me-2"></i>Red Hot Chili Peppers</button></div>  -->
             </div>
          
         </div>
@@ -124,6 +124,13 @@
             
             <h6 class="ml-auto duration text-muted fw-normal"></h6>
         </div>
+    </template>
+    <template data-artist> 
+        <div class="col">
+            <button class="btn btn-outline-danger text-white w-100 fw-bold p-2">
+                <i class="fa-solid fa-circle-play me-2"></i>
+            </button>
+        </div> 
     </template>
 </body>
 </html>

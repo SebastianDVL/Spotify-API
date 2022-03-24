@@ -2,15 +2,12 @@ import {consumirAPI} from './service.js'
 import {imprimirCanciones}from './imprimirCanciones.js' 
 import {manejarReproductor} from './reproductor.js'
 import {reproducirCanciones} from './reproducirCanciones.js'
+import {buscarArtista} from './searchArtist.js'
 
-let artistas = [
-    {uri:'https://api.spotify.com/v1/artists/6zvul52xwTWzilBZl6BUbT/top-tracks?market=US',img:'img/pixies.webp'},
-    {uri:'https://api.spotify.com/v1/artists/7bu3H8JO7d0UbMoVzbo70s/top-tracks?market=US',img:'img/thecure.webp'},
-    {uri:'https://api.spotify.com/v1/artists/5M52tdBnJaKSvOpJGz8mfZ/top-tracks?market=US',img:'img/bs.webp'},
-    {uri:'https://api.spotify.com/v1/artists/7An4yvF7hDYDolN4m5zKBp/top-tracks?market=US',img:'img/se.webp'},
-    {uri:'https://api.spotify.com/v1/artists/0L8ExT028jH3ddEcZwqJJ5/top-tracks?market=US',img:'img/red.jpg'}
-]
- 
+let artistas = buscarArtista()
+
+
+
 let buttons = document.querySelectorAll('.btn')
 let audio = document.querySelector("audio")
 let songs = {}
@@ -20,7 +17,7 @@ let banner = document.querySelector('.banner')
 let header = document.querySelector('header')
 let r = document.querySelector('.r')
 let infos = document.querySelectorAll('.side p')
-
+console.log(artistas)
 
 buttons.forEach((button,index)=>{
     button.addEventListener('click',async()=>{
