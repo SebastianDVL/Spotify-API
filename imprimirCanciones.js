@@ -50,16 +50,8 @@ export function imprimirCanciones(canciones,n){
 
     let infos = document.querySelector('.side p')
 
-    infos.innerHTML = data._snapshot.docChanges[n].doc.data.value.mapValue.fields.historia.stringValue
+    infos.innerHTML = ""
 
     return songNames
 }
-
-Array.prototype.move = function (from, to) {
-    this.splice(to, 0, this.splice(from, 1)[0]);
-}
-
-data._snapshot.docChanges.move(1,0)
-data._snapshot.docChanges.move(4,1)
-data._snapshot.docChanges.move(2,3)
 

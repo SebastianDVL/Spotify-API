@@ -131,7 +131,6 @@ export function reproducirCanciones(songs,audio){
                 if(i != numeros[numeros.length - 1]){
                     numeros.push(i)
                 }
-                console.log(numeros)
                 hideOrShowWaves(i)
                 
                 if(audio.src == songs[i].song){
