@@ -1,6 +1,6 @@
-import { data} from "./firebase.js"
 
-export function imprimirCanciones(canciones,n){
+
+export function imprimirCanciones(canciones){
     const songTemplates = document.querySelector("[data-song-template]")
     const container = document.querySelector("[data-container]")
 
@@ -18,9 +18,20 @@ export function imprimirCanciones(canciones,n){
 
 
     let nombreArtista = document.querySelector('.artista')
-    nombreArtista.textContent = canciones.tracks[0].artists[0].name
+    if(canciones.tracks[0].artists.length > 1) {
+        nombreArtista.textContent = canciones.tracks[0].artists[canciones.tracks[0].artists.length-1].name
+    }else{
+        nombreArtista.textContent = canciones.tracks[0].artists[0].name
+    }
+    
 
-    let songNames = canciones.tracks.map((track,index) => {
+    let nuevasCanciones = canciones.tracks.filter(track =>track.preview_url != null)
+   
+    if (nuevasCanciones > 0){
+        
+    }
+    let songNames = nuevasCanciones.map((track,index) => {
+       
         let cont= songTemplates.content.cloneNode(true).children[0]
         let img = cont.querySelector("img")
         let songName = cont.querySelector(".nombre")
@@ -37,11 +48,14 @@ export function imprimirCanciones(canciones,n){
         album.textContent = track.album.name    
         year.textContent =track.album.release_date.substring(0,4)
         i.textContent = index + 1
+        
         duration.textContent = msToMinutes(track.duration_ms)
+
 
         container.appendChild(cont)
         
         return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity,artista:canciones.tracks[0].artists[0].name}
+        
     })
     
     r.appendChild(reproductor)

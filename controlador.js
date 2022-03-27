@@ -21,18 +21,22 @@ search.addEventListener('change',async e=>{
         let uris = artistas.artists.items.map(item => {
             let artist = dataArtist.content.cloneNode(true).children[0]
             let nombreArtista = artist.querySelector('button')
+            let ima = artist.querySelector('img')
+
             nombreArtista.innerHTML += item.name
 
-            containerArtists.appendChild(artist)
             let im
+
             if (item.images.length > 0){
                 im =  item.images[0].url
+                ima.src = item.images[1].url
             }else{
-                im = ""
+                im = "img/unaveilable.png"
+                ima.src = im
             }
-            
 
-            return{uri: `https://api.spotify.com/v1/artists/${item.id}/top-tracks?market=US`,img: im,btn:nombreArtista}
+            containerArtists.appendChild(artist)
+            return{uri: `https://api.spotify.com/v1/artists/${item.id}/top-tracks?market=CO`,img: im,btn:nombreArtista}
         });
         uris.forEach((button,index)=>{
             button.btn.addEventListener('click',async()=>{
@@ -41,7 +45,7 @@ search.addEventListener('change',async e=>{
             })     
         })
     }else{
-        uris=[]
+        containerArtists.innerHTML = ""
     }
     
     

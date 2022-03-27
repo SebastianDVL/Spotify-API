@@ -68,7 +68,7 @@ html {
   
 }
 @media only screen and (max-width:600px){
-  .cont .nombre{
+  .cont .nombre,.cont p{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -76,6 +76,19 @@ html {
   .cont .f{
     width:300px;
   }
+}
+
+.btn{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.btn:hover .fa-circle-play{
+  transform: scale(110%);
+}
+.rounded-circle{
+  width: 10em;
+  height: 10em;
 }
 
 @media (min-height:800px) and (min-width:767px){
@@ -257,7 +270,7 @@ h2{
 
 .artista{
   text-shadow: rgba(0, 0, 0) 1px 1px 3px;
-  font-size: 8em !important;
+  font-size: 6em !important;
 }
 
 .random{
@@ -273,5 +286,5 @@ header h1{
   font-size: 5.5em !important;
   text-align: center;
   color:#dc3545;
-  text-shadow: #fff 2px 1px 1px;
+  text-shadow: #fff 1px 1px 1px;
 }

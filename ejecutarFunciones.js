@@ -12,28 +12,28 @@ let r = document.querySelector('.r')
 let infos = document.querySelectorAll('.side p')
 
 
-async function ejecutarFunciones(index,canciones) { 
-    songs = await imprimirCanciones(canciones,index)    
+async function ejecutarFunciones(canciones) { 
+    songs = await imprimirCanciones(canciones)    
     reproducirCanciones(songs,audio)
     manejarReproductor(audio)
 }
 
 export function checkAndExecute(index,obj,canciones) {  
-const styles = {
-    backgroundSize:"100% 100%",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center"
-}
-    banner.style.background = `url(${obj[index].img})`
-    Object.assign(banner.style, styles)
-if(dataContainer.childElementCount == 0){
-    header.removeAttribute('class') 
-    ejecutarFunciones(index,canciones)
-}else{
-    infos.innerHTML = ""
-    r.innerHTML = ""
-    dataContainer.innerHTML = ""
-    ejecutarFunciones(index,canciones)
-}
+    const styles = {
+        backgroundSize:"100% 100%",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center"
+    }
+        banner.style.background = `url(${obj[index].img})`
+        Object.assign(banner.style, styles)
+    if(dataContainer.childElementCount == 0){
+        header.removeAttribute('class') 
+        ejecutarFunciones(canciones)
+    }else{
+        infos.innerHTML = ""
+        r.innerHTML = ""
+        dataContainer.innerHTML = ""
+        ejecutarFunciones(canciones)
+    }
 
 }

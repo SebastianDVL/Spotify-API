@@ -18,9 +18,10 @@ export function reproducirCanciones(songs,audio){
 
     //funcion  para reproducir audio si esta pausado o pausar si esta reproduciendo y llamando a la funcion de cambiar el icono 
     
-        //variable que referencia el titulo del documento para cambiarlos por el nombre de la cancion actual que se esta reproduciendo
-        let title = document.querySelector('title') 
-        title.innerHTML = "Spotify | Sebastian"
+    //variable que referencia el titulo del documento para cambiarlos por el nombre de la cancion actual que se esta reproduciendo
+    let title = document.querySelector('title') 
+    title.innerHTML = "Spotify | Sebastian"
+
     let play = (playButtons,n)=>{
         if(audio.paused){
             audio.play()
@@ -32,7 +33,7 @@ export function reproducirCanciones(songs,audio){
             changeICon('fa-play','fa-pause',playButtons)
         }  
     }
-     
+     console.log(songs)
     //el src por defecto del audio va a ser el de la primer cancion
     audio.src = songs[0].song 
 
@@ -105,12 +106,12 @@ export function reproducirCanciones(songs,audio){
           
             //Se quitan los estilos de cancion actual al resto de las canciones exceptuando la actual
             playButtons.forEach((btn,secondIndex)=>{
-                if(i != 10){                 
+                if(i != playButtons.length-1){                 
                     if(secondIndex != i){
                         btn.classList.add('fa-play')
                         btn.classList.remove('fa-pause')
                         btn.parentNode.classList.remove("orange")
-                        if(secondIndex !=10){
+                        if(secondIndex !=playButtons.length-1){
                             btn.classList.add("invisible")
                             btn.parentNode.querySelector(".number").classList.remove("d-hide")
                             btn.parentNode.querySelector('#bar').classList.add("d-hide")
@@ -119,7 +120,7 @@ export function reproducirCanciones(songs,audio){
                 }   
             })
             //se reproduce la cancion y se le da estilo a sus respectivos botones y contenedor dependiendo del boton que precione, ya sea del reproductos o de la cancion en si
-            if(i !=10){ 
+            if(i !=playButtons.length-1){ 
 
                 print(i)
 
@@ -147,15 +148,15 @@ export function reproducirCanciones(songs,audio){
             }
         }
         // if(index == 0){
-        //     reproducir([playButtons[10],playButtons[0]],0)
+        //     reproducir([playButtons[playButtons.length-1],playButtons[0]],0)
         // }
         
         //evento de click para todos los botones de play que llaman a la funcion reproducir con sus repestivos botones e indice
         playButton.addEventListener('click',e =>{
             e.preventDefault();
             e.stopImmediatePropagation();
-            if(index != 10){
-                buttons = [playButton,playButtons[10]]
+            if(index != playButtons.length-1){
+                buttons = [playButton,playButtons[playButtons.length-1]]
                 reproducir(buttons,index)
             }else{
                 buttons=[playButton,playButtons[newIndex]]
@@ -166,8 +167,8 @@ export function reproducirCanciones(songs,audio){
         playButton.parentNode.addEventListener('dblclick',(e)=>{
             e.preventDefault();
             e.stopImmediatePropagation();
-            buttons = [playButton,playButtons[10]]
-            if(index!= 10)reproducir(buttons,index)
+            buttons = [playButton,playButtons[playButtons.length-1]]
+            if(index!= playButtons.length-1)reproducir(buttons,index)
         }) 
         //evento click para los botones de cancion anterior o cancion siguiente con la funcion reproducir
         changeButtons.forEach((cButton, ind)=>{
@@ -176,25 +177,30 @@ export function reproducirCanciones(songs,audio){
                 e.stopImmediatePropagation();
                 if(ind == 1){
                     if(sw){
-                        randomNumber = Math.floor(Math.random() * 10)     
+                        randomNumber = Math.floor(Math.random() * playButtons.length-1)     
                         while(randomNumber == newIndex){
-                            randomNumber = Math.floor(Math.random() * 10)      
+                            randomNumber = Math.floor(Math.random() * playButtons.length-1)      
                         }  
-                        reproducir([playButtons[10],playButtons[randomNumber]],randomNumber)
+                        reproducir([playButtons[playButtons.length-1],playButtons[randomNumber]],randomNumber)
                     }else{
-                        if(newIndex < 9 ){
-                            buttons = [playButtons[10],playButtons[newIndex+1]]
+                        if(newIndex < playButtons.length-2 ){
+                            buttons = [playButtons[playButtons.length-1],playButtons[newIndex+1]]
                             reproducir(buttons,newIndex+1)
                         }else{
-                            buttons = [playButtons[10],playButtons[0]]
+                            buttons = [playButtons[playButtons.length-1],playButtons[0]]
                             reproducir(buttons,0)
                         } 
                     }                                     
                 }else{
                     if(numeros.length > 1){
                         numeros.pop()
-                        buttons = [playButtons[10],playButtons[numeros[numeros.length -1]]]
+                        buttons = [playButtons[playButtons.length-1],playButtons[numeros[numeros.length -1]]]
                         reproducir(buttons,numeros[numeros.length -1])
+                    }else{
+                        buttons = [playButtons[playButtons.length-1],playButtons[numeros[numeros[0]]]]
+                        audio.currentTime = 0
+                        audio.pause()   
+                        reproducir(buttons,numeros[0])
                     }             
                 }       
             })
@@ -205,29 +211,33 @@ export function reproducirCanciones(songs,audio){
             e.preventDefault();
             e.stopImmediatePropagation();
             if(sw){
-                randomNumber = Math.floor(Math.random() * 10)      
+                randomNumber = Math.floor(Math.random() * playButtons.length-1)      
                 while(randomNumber == newIndex){
-                    randomNumber = Math.floor(Math.random() * 10)      
+                    randomNumber = Math.floor(Math.random() * playButtons.length-1)      
                 }  
-                reproducir([playButtons[10],playButtons[randomNumber]],randomNumber)
+                reproducir([playButtons[playButtons.length-1],playButtons[randomNumber]],randomNumber)
             }else{
-                if(newIndex < 9 ){
-                    buttons = [playButtons[10],playButtons[newIndex+1]]
+                if(newIndex < playButtons.length-2){
+                    buttons = [playButtons[playButtons.length-1],playButtons[newIndex+1]]
                     reproducir(buttons,newIndex+1)
                 }else{
-                    playButtons[9].parentNode.querySelector('.number').classList.toggle("d-hide")
-                    playButtons[9].parentNode.querySelector('#bar').classList.toggle("d-hide")
+                    playButtons[playButtons.length-2].parentNode.querySelector('.number').classList.toggle("d-hide")
+                    playButtons[playButtons.length-2].parentNode.querySelector('#bar').classList.toggle("d-hide")
                     changeICon('fa-play','fa-pause',playButtons)
                 }
             }    
         }
-        document.body.onkeyup = function(e) {    
-            if (e.key == " " || e.code == "Space" ||  e.keyCode == 32 && e.target == document.body) {
-                e.stopImmediatePropagation();
-                e.preventDefault();
-                buttons=[playButton,playButtons[newIndex]]
-                reproducir(buttons,index)
+        //funcion para reproducir o pausar musica con la barra espaciadora (SpaceBar)
+        document.body.onkeyup = function(e) {   
+            if(e.target !== document.body.querySelector("#searchArtist")) {
+                if (e.key == " " || e.code == "Space" ||  e.keyCode == 32) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    buttons=[playButton,playButtons[newIndex]]
+                    reproducir(buttons,index)
+                } 
             }
+            
         }
     })  
 }
