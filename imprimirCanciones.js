@@ -1,6 +1,6 @@
 
 
-export function imprimirCanciones(canciones){
+export function imprimirCanciones(canciones,info){
     const songTemplates = document.querySelector("[data-song-template]")
     const container = document.querySelector("[data-container]")
 
@@ -16,7 +16,7 @@ export function imprimirCanciones(canciones){
         return minutos + ":" + (segundos < 10 ? '0' : '') + segundos;
      }
 
-
+    
     let nombreArtista = document.querySelector('.artista')
     if(canciones.tracks[0].artists.length > 1) {
         nombreArtista.textContent = canciones.tracks[0].artists[canciones.tracks[0].artists.length-1].name
@@ -27,9 +27,7 @@ export function imprimirCanciones(canciones){
 
     let nuevasCanciones = canciones.tracks.filter(track =>track.preview_url != null)
    
-    if (nuevasCanciones > 0){
-        
-    }
+  
     let songNames = nuevasCanciones.map((track,index) => {
        
         let cont= songTemplates.content.cloneNode(true).children[0]
@@ -60,12 +58,11 @@ export function imprimirCanciones(canciones){
     
     r.appendChild(reproductor)
 
-    console.log(canciones)
 
-    let infos = document.querySelector('.side p')
+    let infos = document.querySelector('.side div')
 
-    infos.innerHTML = ""
-
+    infos.innerHTML = `<h2><span class="blue">Followers :</span> ${Intl.NumberFormat('es-ES').format(info.followers)}</h2><h2><span class="blue">Generos: </span> ${info.generos}</h2><h2><span class="blue">Popularidad: </span>${info.pop}</h2>`
+   
     return songNames
 }
 

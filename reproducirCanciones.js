@@ -33,7 +33,7 @@ export function reproducirCanciones(songs,audio){
             changeICon('fa-play','fa-pause',playButtons)
         }  
     }
-     console.log(songs)
+     
     //el src por defecto del audio va a ser el de la primer cancion
     audio.src = songs[0].song 
 
@@ -147,9 +147,9 @@ export function reproducirCanciones(songs,audio){
 
             }
         }
-        // if(index == 0){
-        //     reproducir([playButtons[playButtons.length-1],playButtons[0]],0)
-        // }
+        if(index == 0){
+            reproducir([playButtons[playButtons.length-1],playButtons[0]],0)
+        }
         
         //evento de click para todos los botones de play que llaman a la funcion reproducir con sus repestivos botones e indice
         playButton.addEventListener('click',e =>{

@@ -12,8 +12,8 @@ let r = document.querySelector('.r')
 let infos = document.querySelectorAll('.side p')
 
 
-async function ejecutarFunciones(canciones) { 
-    songs = await imprimirCanciones(canciones)    
+async function ejecutarFunciones(canciones,info) { 
+    songs = await imprimirCanciones(canciones,info)    
     reproducirCanciones(songs,audio)
     manejarReproductor(audio)
 }
@@ -28,12 +28,12 @@ export function checkAndExecute(index,obj,canciones) {
         Object.assign(banner.style, styles)
     if(dataContainer.childElementCount == 0){
         header.removeAttribute('class') 
-        ejecutarFunciones(canciones)
+        ejecutarFunciones(canciones,obj[index])
     }else{
         infos.innerHTML = ""
         r.innerHTML = ""
         dataContainer.innerHTML = ""
-        ejecutarFunciones(canciones)
+        ejecutarFunciones(canciones,obj[index])
     }
 
 }

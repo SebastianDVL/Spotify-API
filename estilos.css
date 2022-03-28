@@ -235,10 +235,6 @@ body{
   display: none !important;
 }
 
-h2{
-  color:#dc3545;
-}
-
 .bar {
  background: #E20074;
   bottom: -29px;
@@ -287,4 +283,8 @@ header h1{
   text-align: center;
   color:#dc3545;
   text-shadow: #fff 1px 1px 1px;
+}
+
+.blue{
+    color:#dc3545;
 }
