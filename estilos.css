@@ -288,3 +288,22 @@ header h1{
 .blue{
     color:#dc3545;
 }
+
+.modal-content{
+  background:url("img/\'b4db3050.png\'") !important;
+}
+.modal-header{
+  color:#dc3545;
+}
+
+.modal-footer button{
+  background-color: #dc3545 ;
+}
+
+.modal-footer button:hover{
+  background-color: #dc35469d ;
+}
+
+.modal-footer,.modal-header{
+  border:none;
+}

@@ -1,4 +1,4 @@
-const TOKEN = "Bearer BQCRBnXCOZoap5vzFRET5h31WyI4WmzWyGyDv1mqrMSdunS_ZEigFYvwxpmcCGZfKCZN185AZHWE7s3GXqAbwSm3XOOvcA3MNZHL1Ls0Stdk1oM4eu2dtSQ7_ULvza_bw9BN94ZcsZ3w"
+const TOKEN = "Bearer BQDYoysrcluY_M0mtj71eDL1G_73J8Wp9ZbptZ-GVTZF9hOVJrYBzPhJStWusHbj1FwCtf6Ot77R7zraS6hdeChxQ2acr32Rykw8dpqS6HTFbnsPbVwon6duBa-BD-06ny0U-1SGrS8p"
 
 export const PARAMETROS_PETICION = {
     method:"GET",

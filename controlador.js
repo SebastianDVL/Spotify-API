@@ -48,7 +48,8 @@ search.addEventListener('change',async e=>{
                 if(!isAvailable){
                    checkAndExecute(index,artistas,canciones) 
                 }else{
-                    alert("Este artista no esta disponible")
+                   let invalidArtistModal = new bootstrap.Modal(document.getElementById('invalidArtist'))
+                   invalidArtistModal.show()
                 }
                 
             })     
