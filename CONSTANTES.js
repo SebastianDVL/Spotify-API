@@ -1,8 +1,18 @@
-const TOKEN = "Bearer BQDYoysrcluY_M0mtj71eDL1G_73J8Wp9ZbptZ-GVTZF9hOVJrYBzPhJStWusHbj1FwCtf6Ot77R7zraS6hdeChxQ2acr32Rykw8dpqS6HTFbnsPbVwon6duBa-BD-06ny0U-1SGrS8p"
+import {generarToken} from './generarTokens.js'
 
-export const PARAMETROS_PETICION = {
-    method:"GET",
-    headers:{
-        Authorization:TOKEN
-    }  
+export async function implementarToken(){
+    let obj = await generarToken()
+    let TOKEN = `${obj.token_type} ${obj.access_token}`
+    
+    const PARAMETROS_PETICION = {
+        method:"GET",
+        headers:{
+            Authorization:TOKEN
+        }  
+    }
+    return PARAMETROS_PETICION
 }
+
+
+
+

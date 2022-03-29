@@ -3,7 +3,7 @@
 export function imprimirCanciones(canciones,info){
     const songTemplates = document.querySelector("[data-song-template]")
     const container = document.querySelector("[data-container]")
-
+    const notValidTemplate = document.querySelector("[data-invalidSong]")
     const reproductor = document.querySelector("[data-reproductor]").content.cloneNode(true).children[0]
     const r = document.querySelector('.r')
 
@@ -18,17 +18,15 @@ export function imprimirCanciones(canciones,info){
 
     
     let nombreArtista = document.querySelector('.artista')
-    if(canciones.tracks[0].artists.length > 1) {
-        nombreArtista.textContent = canciones.tracks[0].artists[canciones.tracks[0].artists.length-1].name
-    }else{
-        nombreArtista.textContent = canciones.tracks[0].artists[0].name
-    }
+
+    nombreArtista.textContent = info.nombre
+ 
     
 
-    let nuevasCanciones = canciones.tracks.filter(track =>track.preview_url != null)
-   
+    let cancionesDisponibles = canciones.tracks.filter(track =>track.preview_url != null)
+    let cancionesNoDisponibles = canciones.tracks.filter(track =>track.preview_url == null)
   
-    let songNames = nuevasCanciones.map((track,index) => {
+    let songNames = cancionesDisponibles.map((track,index) => {
        
         let cont= songTemplates.content.cloneNode(true).children[0]
         let img = cont.querySelector("img")
@@ -55,13 +53,34 @@ export function imprimirCanciones(canciones,info){
         return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity,artista:canciones.tracks[0].artists[0].name}
         
     })
-    
+    cancionesNoDisponibles.forEach(cancion => {
+        let contain = notValidTemplate.content.cloneNode(true).children[0]
+        let img = contain.querySelector("img")
+        let songName = contain.querySelector(".nombre")
+        let album = contain.querySelector("p")
+        let year = contain.querySelector("small")
+        let i = contain.querySelector("h6")
+        let duration  = contain.querySelector(".duration")
+
+        img.src = cancion.album.images[0].url
+        img.height = cancion.album.images[2].height
+        img.width = cancion.album.images[2].width
+        
+        songName.textContent = cancion.name
+        album.textContent = cancion.album.name    
+        year.textContent =cancion.album.release_date.substring(0,4)
+        
+        duration.textContent = msToMinutes(cancion.duration_ms)
+
+
+        container.appendChild(contain)
+    });
     r.appendChild(reproductor)
 
 
     let infos = document.querySelector('.side div')
 
-    infos.innerHTML = `<h2><span class="blue">Followers :</span> ${Intl.NumberFormat('es-ES').format(info.followers)}</h2><h2><span class="blue">Generos: </span> ${info.generos}</h2><h2><span class="blue">Popularidad: </span>${info.pop}</h2>`
+    infos.innerHTML = `<h2><span class="blue">Followers :</span> ${Intl.NumberFormat('es-ES').format(info.followers)}</h2><h2><span class="blue">Generos: </span> ${info.generos}</h2><h2><span class="blue">Popularidad: </span>${info.pop}%</h2>`
    
     return songNames
 }

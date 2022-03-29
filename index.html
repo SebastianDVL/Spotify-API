@@ -18,7 +18,8 @@
         <div class="container-fluid d-flex w-100 p-5 h-100 text-white flex-column align-items-center justify-content-evenly">
             <div>
                 <h1 class="mb-5">Search An Artist</h1>
-                <input type="search" class="form-control" id="searchArtist" placeholder="Discover Any Artist's Top 10 Tracks ...">
+                
+                <input type="search" class="form-control" id="searchArtist" placeholder="Discover Any Artist's Top Tracks ...">
             </div>
             <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5 g-2 w-75 mt-4" data-container-artists>
     
@@ -69,7 +70,7 @@
             </div>
             <div class="modal-body text-white">
               
-              <p>No Es Posible Reproducir Las Canciones De Este Artista Debido A Problemas DeDerechos De Autor O Falta De Licencia!</p>
+              <p>No Es Posible Reproducir Las Canciones De Este Artista Debido A Problemas De Derechos De Autor O Falta De Licencia!</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
@@ -133,6 +134,22 @@
             </div>
             <i class="fa-solid fa-play fs-3 ms-2 invisible playBtn"></i>
      
+            
+            <h6 class="ml-auto duration text-muted fw-normal"></h6>
+        </div>
+    </template>
+
+    <template data-invalidSong>
+        <div class="notValid py-2 my-2 ps-2 pe-5 d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center w-75">
+                <div class="n d-flex align-items-center justify-content-center mx-2 position-relative">
+                    <i class="fa-solid fa-ban fs-3"></i>
+                </div>
+                <img src="" class="me-2">
+                <div class="ms-2 f"><h5 class="nombre m-0 p-0"></h5><p class="m-0 p-0"></p><small class="m-0 p-0 "></small></div>
+            
+            </div>
+            <p class="me-5">No Disponible</p>
             
             <h6 class="ml-auto duration text-muted fw-normal"></h6>
         </div>

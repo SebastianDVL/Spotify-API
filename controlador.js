@@ -39,7 +39,7 @@ search.addEventListener('change',async e=>{
             }
 
             containerArtists.appendChild(artist)
-            return{uri: `https://api.spotify.com/v1/artists/${item.id}/top-tracks?market=CO`,img: im,btn:nombreArtista,followers: item.followers.total,generos: item.genres,pop:item.popularity}
+            return{uri: `https://api.spotify.com/v1/artists/${item.id}/top-tracks?market=CO`,img: im,btn:nombreArtista,followers: item.followers.total,generos: item.genres,pop:item.popularity,nombre:item.name}
         });
         artistas.forEach((button,index)=>{
             button.btn.addEventListener('click',async()=>{
@@ -67,6 +67,8 @@ window.addEventListener('keydown', (e) => {
       e.preventDefault();  
     }  
   });
+
+
 
 
 

@@ -101,7 +101,10 @@ html {
   color:white;
   background-color:#202020;
 }
-
+.notValid{
+  color:rgba(255, 255, 255, 0.5);
+  background-color: #111111;
+}
 
 .cont:hover{
     background-color:#353333!important;
@@ -307,3 +310,4 @@ header h1{
 .modal-footer,.modal-header{
   border:none;
 }
+
