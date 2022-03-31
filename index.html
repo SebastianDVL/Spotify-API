@@ -38,7 +38,7 @@
         <div class="row row-cols-1 row-cols-lg-2 ">
             <div class="col">
                 <div class="row px-3 mt-3 text-white w-100">
-                    <div class="col d-flex w-100 mb-2 justify-content-between align-items-center">
+                    <div class="col d-flex w-100 mb-2 mt-3 justify-content-between align-items-center">
                       
                         <i class="ms-3 fa-solid fa-hashtag "></i>
                         <h5 class="w-100 ms-5 ps-5">Title / Album</h5>
@@ -51,10 +51,30 @@
                    
                 </div>
             </div>
-            <div class="col  side text-white px-5 py-3 fs-5 side">
-                <div class="text-center"></div>
-                <a href="" target="_blank" class="btn btn-success p-3 spotifyLink w-100 mt-3"><i class="fa-brands fa-spotify"></i> Listen On Spotify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-             </div>
+            <div class="col  side text-white px-5 py-3 fs-5 d-flex justify-content-center align-items-center">
+              
+                <div class="text-center about d-flex flex-column align-items-center w-100">
+                    <div class="d-flex justify-content-evenly w-100">
+                        <div class="rounded-circle mb-2 p-2 d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="blue">Followers</h2>
+                           <h3 id="followers"></h2>
+                        </div>
+                        <div class="rounded-circle mb-2 p-2 d-flex flex-column align-items-center justify-content-center">
+                            <h2 class="blue">Popularity</h2>
+                            <h3 id="popular"></h2>
+                        </div>
+                    </div>
+                   
+                  
+                    <h2 class="text-white mt-5 ">Genres</h2>
+                    <i class="fa-solid fa-arrow-down mb-5"></i>
+                    <div id="genres">
+
+                    </div>
+                    <a href="" target="_blank" class="btn btn-success p-3 spotifyLink w-100 mt-5 "><i class="fa-brands fa-spotify"></i> Listen On Spotify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+
+            </div>
         </div>
         
     </div>

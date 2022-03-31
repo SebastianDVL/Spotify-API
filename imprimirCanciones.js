@@ -78,9 +78,16 @@ export function imprimirCanciones(canciones,info){
     r.appendChild(reproductor)
 
 
-    let infos = document.querySelector('.side div')
+    let infos = document.querySelector('.side .about')
 
-    infos.innerHTML = `<h2><span class="blue">Followers :</span> ${Intl.NumberFormat('es-ES').format(info.followers)}</h2><h2><span class="blue">Generos: </span> ${info.generos}</h2><h2><span class="blue">Popularidad: </span>${info.pop}%</h2>`
+    infos.querySelector('#followers').textContent = Intl.NumberFormat("es-Es").format(info.followers)
+    infos.querySelector('#popular').textContent = `${info.pop}%`
+    info.generos.forEach(genero=>{
+        let gen = document.createElement('div')
+        gen.classList.add("py-2","rounded-pill","orange","mb-2","px-4")
+        gen.textContent = genero
+        infos.querySelector("#genres").appendChild(gen)
+    })
    
     return songNames
 }
