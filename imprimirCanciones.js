@@ -1,5 +1,4 @@
 
-
 export function imprimirCanciones(canciones,info){
     const songTemplates = document.querySelector("[data-song-template]")
     const container = document.querySelector("[data-container]")
@@ -77,14 +76,15 @@ export function imprimirCanciones(canciones,info){
     });
     r.appendChild(reproductor)
 
+   
 
     let infos = document.querySelector('.side .about')
-
+    infos.querySelector("#genres").innerHTML = " "
     infos.querySelector('#followers').textContent = Intl.NumberFormat("es-Es").format(info.followers)
     infos.querySelector('#popular').textContent = `${info.pop}%`
     info.generos.forEach(genero=>{
         let gen = document.createElement('div')
-        gen.classList.add("py-2","rounded-pill","orange","mb-2","px-4")
+        gen.classList.add("py-2","rounded-pill","orange","mb-3","px-4")
         gen.textContent = genero
         infos.querySelector("#genres").appendChild(gen)
     })

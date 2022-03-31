@@ -28,6 +28,7 @@ export function checkAndExecute(index,obj,canciones) {
         Object.assign(banner.style, styles)
     if(dataContainer.childElementCount == 0){
         header.removeAttribute('class') 
+        document.querySelector("hr").classList.remove("invisible")
         ejecutarFunciones(canciones,obj[index])
     }else{
         infos.innerHTML = ""
