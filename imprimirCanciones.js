@@ -80,14 +80,22 @@ export function imprimirCanciones(canciones,info){
 
     let infos = document.querySelector('.side .about')
     infos.querySelector("#genres").innerHTML = " "
-    infos.querySelector('#followers').textContent = Intl.NumberFormat("es-Es").format(info.followers)
+    infos.querySelector('#followers').textContent = Intl.NumberFormat("es-ES").format(info.followers)
     infos.querySelector('#popular').textContent = `${info.pop}%`
-    info.generos.forEach(genero=>{
+    if(info.generos.length > 0){
+        info.generos.forEach(genero=>{
+            let gen = document.createElement('div')
+            gen.classList.add("py-2","rounded-pill","orange","mb-3","px-4")
+            gen.textContent = genero
+            infos.querySelector("#genres").appendChild(gen)
+        })
+    }else{
         let gen = document.createElement('div')
         gen.classList.add("py-2","rounded-pill","orange","mb-3","px-4")
-        gen.textContent = genero
+        gen.textContent = "?"
         infos.querySelector("#genres").appendChild(gen)
-    })
+    }
+   
    
     return songNames
 }
