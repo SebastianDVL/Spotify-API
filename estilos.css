@@ -133,7 +133,17 @@ hr{
   transition: 100ms;
   cursor: pointer;
 }
-
+.f{
+  width:70%;
+}
+.n{
+  width:30%;
+}
+.cont .nombre,.cont .f p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .n{
     width: 40px;
@@ -154,6 +164,29 @@ clear: both;
   .audio-player{
     height: 14vh;
   }
+  .cont .nombre,.cont p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cont .f{
+    width:200px;
+  }
+  
+} 
+@media only screen and (min-width:1400px){
+  .audio-player{
+    height: 14vh;
+  }
+  .cont .nombre,.cont p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cont .f{
+    width:70%;
+  }
+  
 } 
 
 
@@ -331,7 +364,7 @@ header h1{
 }
 
 #genres{
-  height:70vh;
+  height:75vh;
   overflow-y: scroll;
 }
 
