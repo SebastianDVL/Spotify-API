@@ -83,9 +83,34 @@ export function reproducirCanciones(songs,audio){
         random.classList.toggle("on")
     })
     let numeros = [0]
-    let randomNumber
+    let numbers = []
 
+    songs.forEach(song => numbers.push(song.ind))
 
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+      
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+      
+          // And swap it with the current element.
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+      
+        return array;
+      }
+      
+      shuffle(numbers);
+      let c = -1
+      if(numbers[0] == 0){
+        c = 0
+      }
+      
     //Se llama a todos los botones para sus respectivas funciones
     playButtons.forEach((playButton,index) =>{  
         
@@ -177,11 +202,11 @@ export function reproducirCanciones(songs,audio){
                 e.stopImmediatePropagation();
                 if(ind == 1){
                     if(sw){
-                        randomNumber = Math.floor(Math.random() * playButtons.length-1)     
-                        while(randomNumber == newIndex){
-                            randomNumber = Math.floor(Math.random() * playButtons.length-1)      
-                        }  
-                        reproducir([playButtons[playButtons.length-1],playButtons[randomNumber]],randomNumber)
+                        c++ 
+                        if(c == numbers.length){
+                            c = 0
+                        }       
+                        reproducir([playButtons[playButtons.length-1],playButtons[numbers[c]]],numbers[c])
                     }else{
                         if(newIndex < playButtons.length-2 ){
                             buttons = [playButtons[playButtons.length-1],playButtons[newIndex+1]]
@@ -211,11 +236,11 @@ export function reproducirCanciones(songs,audio){
             e.preventDefault();
             e.stopImmediatePropagation();
             if(sw){
-                randomNumber = Math.floor(Math.random() * playButtons.length-1)      
-                while(randomNumber == newIndex){
-                    randomNumber = Math.floor(Math.random() * playButtons.length-1)      
-                }  
-                reproducir([playButtons[playButtons.length-1],playButtons[randomNumber]],randomNumber)
+                c++        
+                reproducir([playButtons[playButtons.length-1],playButtons[numbers[c]]],numbers[c])
+                if(c == numbers.length-1){
+                    c = -1
+                }
             }else{
                 if(newIndex < playButtons.length-2){
                     buttons = [playButtons[playButtons.length-1],playButtons[newIndex+1]]

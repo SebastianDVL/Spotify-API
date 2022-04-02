@@ -242,6 +242,8 @@ clear: both;
 
 header{
   background:url("img/\'b4db3050.png\'");
+
+
 }
 
 body{
@@ -299,7 +301,6 @@ header h1{
   font-size: 5.5em !important;
   text-align: center;
   color:#dc3545;
-  text-shadow: #fff 1px 1px 1px;
 }
 
 .blue{
@@ -327,5 +328,10 @@ header h1{
 
 .modal-footer,.modal-header{
   border:none;
+}
+
+#genres{
+  height:70vh;
+  overflow-y: scroll;
 }
 

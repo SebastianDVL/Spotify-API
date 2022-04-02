@@ -49,7 +49,7 @@ export function imprimirCanciones(canciones,info){
 
         container.appendChild(cont)
         
-        return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity,artista:canciones.tracks[0].artists[0].name}
+        return {contenedor:cont, titulo:track.name,song:track.preview_url,album:track.album.name,img:track.album.images,popularity:track.popularity,artista:canciones.tracks[0].artists[0].name,ind:index}
         
     })
     cancionesNoDisponibles.forEach(cancion => {
