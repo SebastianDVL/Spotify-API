@@ -5,15 +5,15 @@ export function manejarReproductor(audio){
 
     window.onload = ()=>{timeline.value = 0}
 
-    
+    //funcion para llenar el background de la linea del tiempo dependiendo del tiempo actual de la cancion
     let cambiarPosicion = ()=> {
-    let porcentaje = (100*audio.currentTime) / audio.duration;
-    timeline.style.backgroundSize = `${porcentaje}% 100%`;
-    timeline.value = porcentaje;
+        let porcentaje = (100*audio.currentTime) / audio.duration;
+        timeline.style.backgroundSize = `${porcentaje}% 100%`;
+        timeline.value = porcentaje;
     }
 
     audio.ontimeupdate = cambiarPosicion;
-
+    //funcion para manejar linea del tiempo de la cancion con el input range
     let cambiarLinea = ()=> {
         let tiempo = (timeline.value * audio.duration) / 100;
         audio.currentTime = tiempo;
@@ -21,7 +21,7 @@ export function manejarReproductor(audio){
     
     timeline.addEventListener('change', cambiarLinea)
 
-    //aplicar estilos al backgroud de la linea del range cuando se maneja manualmente la linea del range
+    //aplicar estilos al backgroud de la linea del range cuando se maneja manualmente la linea de tiempo de la cancion o el volumen
 
     let rangeInputs = document.querySelectorAll('input[type="range"]')
 
@@ -41,7 +41,7 @@ export function manejarReproductor(audio){
     input.addEventListener('input', handleInputChange)
     })
 
-    // Cambiar icono de volumen dependiendo del nivel de volumen
+    // Cambiar icono de volumen dependiendo del nivel de volumen (mutear o desmutear)
 
     let volumeline = document.querySelector('.volumeline')
     let volumeIcon = document.querySelector('.volumeIcon')
@@ -64,6 +64,7 @@ export function manejarReproductor(audio){
        manageVolume(volumeline.value)
     })
 
+    //funcion para mnejar el volumen del reproductor y cambiar el icono con respecto al nivel de volumen
     function manageVolume(volumeValue){
         let volume = volumeValue/ 100;
         if(volume == 0){

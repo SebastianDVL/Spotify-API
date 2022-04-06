@@ -5,16 +5,22 @@ html {
   user-select: none;
   }
   ::-webkit-scrollbar {
-  width: 0px; 
+   width: 0px; /*quitar scrollbar */
 
   }
+
+header{
+  background:url("../img/\'b4db3050.png\'");
+
+
+}
+
+body{
+  background-color:#202020;
+}
+/*se estila el baner y su contenido*/
 .banner{
     height: 75vh;
-}
-.bgAdjust{
-  background-size:100% 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
 }
 .banner > div > h1{
     font-size: 6em;
@@ -25,6 +31,8 @@ html {
     background-color:rgb(17, 28, 43,0.5) !important;
     
 }
+
+/*se estila la seccion del info artista*/
 .about >div div{
   background-color:#1b1a1a;
   box-shadow: rgba(0, 0, 0, 0.4)  1px 10px 4px;
@@ -39,9 +47,8 @@ html {
 [data-container]{
     margin-bottom: 14vh;
 }
-hr{
-  z-index: -10;
-}
+
+/*media querys para sitio web responsive en celular*/
 @media only screen and (max-width:992px){
   [data-container]{
     margin-bottom:0;
@@ -92,6 +99,7 @@ hr{
   }
 }
 
+/*se estilan los botones de los artistas (en busqueda)*/
 .btn{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -110,7 +118,7 @@ hr{
     height: 11vh !important;
   }
 }
-
+/*se estilan los contenedores de las canciones*/
 .cont{
   color:white;
   background-color:#202020;
@@ -152,14 +160,16 @@ small{
   color:#afafaf;
 }
 
+/*se estila el reproductor de audio para  mantenerlo fijo*/
 .audio-player{
 width: 100%;
 position:fixed;
-background:url("img/\'b4db3050.png\'");
+background:url("../img/\'b4db3050.png\'");
 height: 14vh;
 bottom: 0;
 clear: both;
 }
+/*mas media querys :V*/
  @media only screen and (min-width:992px){
   .audio-player{
     height: 14vh;
@@ -193,7 +203,7 @@ clear: both;
 .audio-player i{
   color:#dc3545;
 }
-
+/*se estila el input range para el volumen*/
 .volumeline {
     -webkit-appearance: none;
 
@@ -216,7 +226,7 @@ clear: both;
   }
   
 
-
+/*se estila la linea de tiempo del audio cancion*/
 .timeline {
     -webkit-appearance: none;
     width: 100%;
@@ -273,16 +283,6 @@ clear: both;
   background:#353333;
 }
 
-header{
-  background:url("img/\'b4db3050.png\'");
-
-
-}
-
-body{
-  background-color:#202020;
-}
-
 .d-hide{
   display: none !important;
 }
@@ -295,7 +295,7 @@ body{
   width: 1px;      
   animation: sound 0ms -800ms linear infinite alternate;
 }
-
+/*animacion para las barras de musica reproduciendo efecto*/
 @keyframes sound {
   0% {
      opacity: .35;
@@ -344,8 +344,9 @@ header h1{
   color:#8f232e;
 }
 
+/*se estila el modal de artista no disponible*/
 .modal-content{
-  background:url("img/\'b4db3050.png\'") !important;
+  background:url("../img/\'b4db3050.png\'") !important;
 }
 .modal-header{
   color:#dc3545;
@@ -362,6 +363,7 @@ header h1{
 .modal-footer,.modal-header{
   border:none;
 }
+
 
 #genres{
   height:75vh;

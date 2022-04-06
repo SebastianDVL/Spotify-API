@@ -1,5 +1,5 @@
 import {implementarToken} from './CONSTANTES.js'
-//funcion para consumir APIS(DATOS) de cualquier servidor con  JS PURO
+//funcion para consumir APIS(DATOS) del servidor de spotify
 
 export async function consumirAPI(URI){
 
